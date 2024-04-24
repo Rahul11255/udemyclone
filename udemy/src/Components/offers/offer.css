@@ -1,0 +1,26 @@
+.offer_container{
+    width: 100%;
+    height: auto;
+    padding: 20px 10px;
+    background-color: #ECEB98;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.offer_text{
+    font-size: 20px;
+}
+
+.offer_close{
+   position: absolute;
+   display: flex ;
+   right: 20px;
+   top: 15px;
+
+}
+
+.close_icon:active{
+    color: grey !important;
+}
