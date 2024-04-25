@@ -12,7 +12,6 @@ const Timer = () => {
             const distance = offerEndTime - now;
 
             if (distance < 0) {
-                // Offer has expired
                 setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 });
             } else {
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
