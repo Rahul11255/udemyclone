@@ -10,7 +10,7 @@ function App() {
       <div>
        <Offer/>
        <Navbar/>
-       <h1>hello</h1>
+       <h1>1192106</h1>
       </div>
     </>
   )
