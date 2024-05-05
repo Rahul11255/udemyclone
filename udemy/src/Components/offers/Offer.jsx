@@ -21,7 +21,7 @@ const Offer = () => {
     >
       <div className="offer_text">
         <p>
-          <b>Its the last day to save</b> | The skills for now — now on sale.
+          <b>Its the last day to save</b> | The skills for now — now on sale. 
         </p>
         <Timer />
       </div>

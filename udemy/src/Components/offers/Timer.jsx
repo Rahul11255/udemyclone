@@ -6,7 +6,7 @@ const Timer = () => {
     const [remainingTime, setRemainingTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
     useEffect(() => {
-        const offerEndTime = new Date("2024-04-28T00:00:00"); // Replace with your offer's end time
+        const offerEndTime = new Date("2024-05-15T00:00:00"); // Replace with your offer's end time
         const timer = setInterval(() => {
             const now = new Date();
             const distance = offerEndTime - now;
