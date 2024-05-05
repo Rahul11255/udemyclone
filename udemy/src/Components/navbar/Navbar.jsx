@@ -20,7 +20,7 @@ import { styled } from '@mui/material/styles';
 
 const pages = ["Home", "Products", "Collection",
 "Pages","Contact Us"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile",  "Logout"];
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     right: -3,
@@ -50,8 +50,8 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: "white", color: "black" }}>
-      <Container maxWidth="xl">
+    <AppBar position="sticky" style={{ height: "100px",backgroundColor: "white", color: "black", display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
+  <Container maxWidth="xl" >
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
             <img
