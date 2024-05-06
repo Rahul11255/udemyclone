@@ -144,7 +144,7 @@ function ResponsiveAppBar() {
               <div>
                 <Tooltip title="Cart">
                   <IconButton>
-                  <StyledBadge badgeContent={4} color="primary">
+                  <StyledBadge badgeContent={"o"} color="primary">
                     <ShoppingCartOutlinedIcon />
                     </StyledBadge>
                   </IconButton>

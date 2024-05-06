@@ -10,7 +10,7 @@ function App() {
     <>
        <Offer/>
        <Navbar/>
-       <Landing/>
+       <Landing/> 
       
     </>
   )
