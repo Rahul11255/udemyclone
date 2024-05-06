@@ -7,3 +7,45 @@
   font-family: "Roboto", sans-serif;
 }
 
+
+
+
+.gototop_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.top_btn{
+font-size: 2.4rem;
+width: 3rem;
+height: 3rem;
+color: #fff;
+background-color: #1976D2;
+border-radius: 50%;
+position: fixed;
+bottom: 2rem;
+right: 2rem;
+z-index: 999;
+display: flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+}
+
+.top_btn img{
+  width: 100%;
+  color: white;
+  animation: gototop 1.2s linear infinite alternate-reverse;
+
+}
+
+  @keyframes gototop {
+  0% {
+  transform: translateY(-0.8rem);
+  }
+  100% {
+  transform: translateY(0.3rem);
+  }
+  }

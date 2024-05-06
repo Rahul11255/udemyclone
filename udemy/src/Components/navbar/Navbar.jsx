@@ -121,7 +121,7 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <div className="navbar_left">
+            <div className="navbar_right">
               <div className="search-box">
                 <button className="btn-search">
                 <Tooltip title="Search">
