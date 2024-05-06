@@ -237,7 +237,7 @@
 
   .hero_text_container {
     width: 100%;
-    height: 240px;
+    height: 270px;
     background-size: cover;
     background-position: center;
     padding-left: 11%;
@@ -277,5 +277,14 @@
     font-size: 16px;
     font-weight: 400;
     border-radius: 0% !important;
+  }
+}
+
+
+@media screen and (max-width : 450px) {
+  .hero_text_container {
+    width: 100%;
+    height: 240px;
+    padding-left: 11%;
   }
 }
