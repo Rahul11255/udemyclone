@@ -24,3 +24,22 @@
 .close_icon:active{
     color: grey !important;
 }
+
+@media screen and ( max-width: 450px) {
+
+    .offer_text{
+        font-size: 11px;
+    }
+    
+    .offer_close{
+       position: absolute;
+       display: flex ;
+       right: 0px;
+       top: 8px;
+    
+    }
+    
+    .close_icon:active{
+        color: grey !important;
+    }
+}

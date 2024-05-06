@@ -2,6 +2,125 @@
 
 .feature_container{
     width: 100%;
-    height: 750px;
+    height: auto;
     padding: 98px 54px;
+    box-sizing: border-box;
 }
+
+.feature_grid{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    /* grid-template-rows: auto; */
+    grid-column-gap: 15px;
+    
+}
+
+.grid_item_left{
+    box-sizing: border-box;
+  width: 100%;
+  padding:0px 10px;
+}
+
+.grid_item_left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+
+}
+
+.grid_item_right{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 300px  300px;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    padding: 20px 15px;
+
+}
+
+@media screen and (max-width : 750px) {
+
+    .feature_container{
+        width: 100%;
+        height: auto;
+        padding: 48px 25px;
+        box-sizing: border-box;
+    }
+
+    .grid_item_left{
+      box-sizing: border-box;
+      width: 100%;
+      padding:20px 10px;
+    }
+    .feature_grid{
+        display: grid;
+        grid-template-columns:1fr;
+        grid-template-rows: auto auto;
+        grid-column-gap: 15px;
+        
+    }
+    
+    .grid_item_left img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    
+    }
+    
+    .grid_item_right{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-column-gap: 15px;
+        grid-row-gap: 15px;
+        padding: 20px 15px;
+    
+    }
+    
+}
+
+@media screen and (max-width : 450px) {
+
+    .feature_container{
+        width: 100%;
+        height: auto;
+        padding: 48px 25px;
+        box-sizing: border-box;
+    }
+
+    .grid_item_left{
+      box-sizing: border-box;
+      width: 100%;
+      padding:20px 15px;
+    }
+    .feature_grid{
+        display: grid;
+        grid-template-columns:1fr;
+        grid-template-rows: auto auto;
+        grid-column-gap: 15px;
+        
+    }
+    
+    .grid_item_left img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    
+    }
+    
+    .grid_item_right{
+        display: grid;
+        grid-template-columns: 1fr ;
+        grid-template-rows: 300px  300px 300px 300px;
+        grid-column-gap: 15px;
+        grid-row-gap: 15px;
+        place-items: center;
+        padding: 20px 15px;
+    }
+    
+}
+
