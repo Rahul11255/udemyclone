@@ -24,7 +24,7 @@ const Timer = () => {
 
         return () => clearInterval(timer);
     }, []);
-    console.log("hello");
+
 
   return (
     <h3>Ends in {remainingTime.days}d {remainingTime.hours}h {remainingTime.minutes}m {remainingTime.seconds}s.</h3>

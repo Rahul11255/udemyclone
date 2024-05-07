@@ -6,7 +6,10 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-
+:root{
+    --pfonts: "Poppins", sans-serif;
+    --grey:rgb(102, 102, 102);
+}
 
 
 

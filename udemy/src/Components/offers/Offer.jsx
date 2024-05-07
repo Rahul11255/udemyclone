@@ -12,7 +12,6 @@ const Offer = () => {
     setOpen(!open);
   };
 
-  console.log("offertext");
 
   return (
     <section

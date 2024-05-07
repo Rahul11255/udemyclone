@@ -1,0 +1,107 @@
+.topdeals_container {
+  width: 100%;
+  height: 120vh;
+  box-sizing: border-box;
+  background-color: white;
+  padding: 0px 55px;
+}
+
+.topdeals {
+  padding: 0px 15px;
+}
+
+.topdeals_top {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.topdeals_top h2 {
+  font-family: var(--pfonts);
+  padding: 10px 5px;
+  font-weight: 600;
+  font-size: 30px;
+}
+.topdeals_top p {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--grey);
+  font-family: var(--pfonts);
+}
+
+.topdeals_bottom {
+  margin-top: 60px;
+  width: 100%;
+  height: auto;
+  padding-bottom: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background-color: white;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  border-radius: 5px;
+    /* border: 1px solid red; */
+}
+.card h3 {
+    font-family: var(--pfonts);
+    padding-top: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(71, 70, 70);
+    text-transform: capitalize;
+    padding-bottom: 5px;
+}
+
+.card p{
+    font-family: var(--pfonts);
+    font-size: 16px ;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding-bottom: 5px;
+
+}
+
+.card h5{
+    font-family: var(--pfonts);
+    font-size: 14px ;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding-bottom: 20px;
+}
+
+.card_img {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.mySwiper{
+    padding-bottom:10px ;
+}
+
+.card_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Adding a smooth transition */
+}
+
+.card_img img:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 750px) {
+  .topdeals_container {
+    padding: 0px 15px;
+  }
+}

@@ -1,4 +1,5 @@
-import * as React from "react";
+// ResponsiveAppBar.js
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,31 +9,41 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
+
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-// import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import SearchIcon from "@mui/icons-material/Search";
+import Tooltip from "@mui/material/Tooltip";
 import { MenuItem } from "@mui/material";
 import "./navbar.css";
-import Badge from '@mui/material/Badge';
-import { styled } from '@mui/material/styles';
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
 
-const pages = ["Home", "Products", "Collection",
-"Pages","Contact Us"];
-const settings = ["Profile",  "Logout"];
+const pages = ["Home", "Products", "Collection", "Pages", "Contact Us"];
+const settings = ["Profile", "Logout"];
 const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
+  "& .MuiBadge-badge": {
     right: -3,
     top: 3,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 4px',
+    padding: "0 4px",
   },
 }));
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [cartItemCount, setCartItemCount] = React.useState(0);
+
+  React.useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const totalCount = cartItems.reduce(
+      (acc, item) => acc + item.quantity,
+      0
+    );
+    setCartItemCount(totalCount);
+    
+  }, []);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -50,18 +61,38 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="sticky" style={{ height: "100px",backgroundColor: "white", color: "black", display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
-  <Container maxWidth="xl" >
+    <AppBar
+      position="sticky"
+      style={{
+        height: "100px",
+        backgroundColor: "white",
+        color: "black",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+      }}
+    >
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
             <img
               src="https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/logo-udemy.svg"
               alt="Logo"
-              style={{ width: "130px", height: "45px", cursor: "pointer" }}
+              style={{
+                width: "130px",
+                height: "45px",
+                cursor: "pointer",
+              }}
             />
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -112,10 +143,15 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+            }}
+          >
             <ul className="nav_list">
-              {pages.map((item,key)=>{
-                return <li key={key}>{item}</li>
+              {pages.map((item, key) => {
+                return <li key={key}>{item}</li>;
               })}
             </ul>
           </Box>
@@ -124,8 +160,8 @@ function ResponsiveAppBar() {
             <div className="navbar_right">
               <div className="search-box">
                 <button className="btn-search">
-                <Tooltip title="Search">
-                  <SearchIcon />
+                  <Tooltip title="Search">
+                    <SearchIcon />
                   </Tooltip>
                 </button>
                 <input
@@ -144,8 +180,8 @@ function ResponsiveAppBar() {
               <div>
                 <Tooltip title="Cart">
                   <IconButton>
-                  <StyledBadge badgeContent={"o"} color="primary">
-                    <ShoppingCartOutlinedIcon />
+                    <StyledBadge badgeContent={cartItemCount} color="primary">
+                      <ShoppingCartOutlinedIcon />
                     </StyledBadge>
                   </IconButton>
                 </Tooltip>
