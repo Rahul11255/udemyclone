@@ -1,13 +1,20 @@
-// ProductsCard.js
-import  { useEffect, useState } from "react";
+import { useCart } from "react-use-cart";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { useEffect, useState } from "react";
 import "./topproducts.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import { Tooltip } from "@mui/material";
 
 const ProductsCard = ({ data }) => {
   const [slidesPerView, setSlidesPerView] = useState(4);
+  const { addItem } = useCart();
+
+  const addtoCart = (product) => {
+    addItem(product);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,19 +36,6 @@ const ProductsCard = ({ data }) => {
     };
   }, []); // Empty dependency array to run only once on mount
 
-  const addToCart = (product) => {
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-    const existingItem = cartItems.find((item) => item.id === product.id);
-
-    if (existingItem) {
-      existingItem.quantity++;
-    } else {
-      cartItems.push({ ...product, quantity: 1 });
-    }
-
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  };
-
   return (
     <Swiper
       pagination={true}
@@ -55,11 +49,16 @@ const ProductsCard = ({ data }) => {
         <SwiperSlide key={index} className="card">
           <div className="card_img">
             <img src={product.thumbnail} alt={product.title} />
+            <div className="cart_buton" onClick={() => addtoCart(product)}>
+            <Tooltip title="add to cart">
+               <ShoppingCartOutlinedIcon/>
+               </Tooltip>
+            </div>
           </div>
           <h3>{product.title}</h3>
           <p>₹ {product.price}</p>
-          <button onClick={() => addToCart(product)}>Add to Cart</button>
-          <h5>Rating: {product.rating}</h5>
+          {/* <button onClick={() => addtoCart(product)}>Add to Cart</button> */}
+          {/* <h5>Rating: {product.rating}</h5> */}
         </SwiperSlide>
       ))}
     </Swiper>

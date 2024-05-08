@@ -9,7 +9,7 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-
+import { useCart } from "react-use-cart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from "@mui/icons-material/Search";
@@ -18,8 +18,15 @@ import { MenuItem } from "@mui/material";
 import "./navbar.css";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
+import { NavLink } from "react-router-dom";
 
-const pages = ["Home", "Products", "Collection", "Pages", "Contact Us"];
+const pages = [
+  { name: "Home", link: "/" },
+  { name: "Products", link: "/products" },
+  { name: "Collection", link: "/collection" },
+  { name: "Pages", link: "/pages" },
+  { name: "Contact Us", link: "/contact" },
+];
 const settings = ["Profile", "Logout"];
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -33,17 +40,20 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [cartItemCount, setCartItemCount] = React.useState(0);
+  // const [cartItemCount, setCartItemCount] = React.useState(0);
 
-  React.useEffect(() => {
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-    const totalCount = cartItems.reduce(
-      (acc, item) => acc + item.quantity,
-      0
-    );
-    setCartItemCount(totalCount);
-    
-  }, []);
+  // React.useEffect(() => {
+  //   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  //   const totalCount = cartItems.reduce(
+  //     (acc, item) => acc + item.quantity,
+  //     0
+  //   );
+  //   setCartItemCount(totalCount);
+
+  // }, []);
+
+  const { totalItems } = useCart();
+  console.log("asdfasdf", totalItems);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -76,15 +86,17 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
-            <img
-              src="https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/logo-udemy.svg"
-              alt="Logo"
-              style={{
-                width: "130px",
-                height: "45px",
-                cursor: "pointer",
-              }}
-            />
+            <NavLink to={"/"} style={{border:"none"}}>
+              <img
+                src="https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/logo-udemy.svg"
+                alt="Logo"
+                style={{
+                  width: "130px",
+                  height: "45px",
+                  cursor: "pointer",
+                }}
+              />
+            </NavLink>
           </Box>
 
           <Box
@@ -111,11 +123,14 @@ function ResponsiveAppBar() {
                 width: "100%",
               }}
             >
+             <NavLink to={"/"} style={{border:"none"}}>
+
               <img
                 src="https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/logo-udemy.svg"
                 alt="Logo"
                 style={{ width: "100px", height: "35px" }}
               />
+              </NavLink>
             </div>
             <Menu
               id="menu-appbar"
@@ -137,7 +152,9 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <NavLink to={page.link} activeClassName="active" className="nav_list_items" >
+                  <Typography textAlign="center">{page.name}</Typography>
+                  </NavLink>
                 </MenuItem>
               ))}
             </Menu>
@@ -150,9 +167,13 @@ function ResponsiveAppBar() {
             }}
           >
             <ul className="nav_list">
-              {pages.map((item, key) => {
-                return <li key={key}>{item}</li>;
-              })}
+              {pages.map((item, key) => (
+                <li key={key}>
+                  <NavLink to={item.link} activeClassName="active" className="nav_list_items">
+                    {item.name}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </Box>
 
@@ -170,20 +191,22 @@ function ResponsiveAppBar() {
                   placeholder="Type to Search..."
                 />
               </div>
-              <div>
+              {/* <div>
                 <Tooltip title="Wishlist">
                   <IconButton>
                     <FavoriteBorderIcon />
                   </IconButton>
                 </Tooltip>
-              </div>
+              </div> */}
               <div>
                 <Tooltip title="Cart">
-                  <IconButton>
-                    <StyledBadge badgeContent={cartItemCount} color="primary">
-                      <ShoppingCartOutlinedIcon />
-                    </StyledBadge>
-                  </IconButton>
+                  <NavLink to={"/user-cart"}>
+                    <IconButton>
+                      <StyledBadge badgeContent={totalItems} color="primary">
+                        <ShoppingCartOutlinedIcon />
+                      </StyledBadge>
+                    </IconButton>
+                  </NavLink>
                 </Tooltip>
               </div>
               <div>

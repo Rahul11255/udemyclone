@@ -25,8 +25,8 @@ const Offer = () => {
         <Timer />
       </div>
       <div className="offer_close">
-        <IconButton onClick={toggleClosebutton}>
-          <CloseIcon className="close_icon" sx={{ color: "black" }} />
+        <IconButton onClick={toggleClosebutton} sx={{backgroundColor:"white"}}>
+          <CloseIcon className="close_icon" sx={{ color: "blue" }} />
         </IconButton>
       </div>
     </section>
