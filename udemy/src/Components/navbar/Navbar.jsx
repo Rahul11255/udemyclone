@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import { useCart } from "react-use-cart";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+// import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import Tooltip from "@mui/material/Tooltip";
@@ -40,20 +40,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  // const [cartItemCount, setCartItemCount] = React.useState(0);
-
-  // React.useEffect(() => {
-  //   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-  //   const totalCount = cartItems.reduce(
-  //     (acc, item) => acc + item.quantity,
-  //     0
-  //   );
-  //   setCartItemCount(totalCount);
-
-  // }, []);
-
+  
   const { totalItems } = useCart();
-  console.log("asdfasdf", totalItems);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -74,7 +62,7 @@ function ResponsiveAppBar() {
     <AppBar
       position="sticky"
       style={{
-        height: "100px",
+        height: "60px",
         backgroundColor: "white",
         color: "black",
         display: "flex",
@@ -86,13 +74,13 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
-            <NavLink to={"/"} style={{border:"none"}}>
+            <NavLink to={"/"} style={{ border: "none" }}>
               <img
                 src="https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/logo-udemy.svg"
                 alt="Logo"
                 style={{
-                  width: "130px",
-                  height: "45px",
+                  width: "120px",
+                  height: "35px",
                   cursor: "pointer",
                 }}
               />
@@ -123,13 +111,12 @@ function ResponsiveAppBar() {
                 width: "100%",
               }}
             >
-             <NavLink to={"/"} style={{border:"none"}}>
-
-              <img
-                src="https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/logo-udemy.svg"
-                alt="Logo"
-                style={{ width: "100px", height: "35px" }}
-              />
+              <NavLink to={"/"} style={{ border: "none" }}>
+                <img
+                  src="https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/logo-udemy.svg"
+                  alt="Logo"
+                  style={{ width: "100px", height: "35px" }}
+                />
               </NavLink>
             </div>
             <Menu
@@ -150,10 +137,14 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                <NavLink to={page.link} activeClassName="active" className="nav_list_items" >
-                  <Typography textAlign="center">{page.name}</Typography>
+              {pages.map((page,key) => (
+                <MenuItem key={key} onClick={handleCloseNavMenu}>
+                  <NavLink
+                    to={page.link}
+                    activeclassname="active"
+                    className="nav_list_items"
+                  >
+                    <Typography textAlign="center">{page.name}</Typography>
                   </NavLink>
                 </MenuItem>
               ))}
@@ -169,7 +160,11 @@ function ResponsiveAppBar() {
             <ul className="nav_list">
               {pages.map((item, key) => (
                 <li key={key}>
-                  <NavLink to={item.link} activeClassName="active" className="nav_list_items">
+                  <NavLink
+                    to={item.link}
+                    activeclassname="active"
+                    className="nav_list_items"
+                  >
                     {item.name}
                   </NavLink>
                 </li>
@@ -200,13 +195,13 @@ function ResponsiveAppBar() {
               </div> */}
               <div>
                 <Tooltip title="Cart">
-                  <NavLink to={"/user-cart"}>
-                    <IconButton>
-                      <StyledBadge badgeContent={totalItems} color="primary">
+                  <IconButton>
+                    <StyledBadge badgeContent={totalItems} color="primary">
+                      <NavLink to={"/user-cart"}  className="nav_list_items" style={{border:"none",color:"grey"}}>
                         <ShoppingCartOutlinedIcon />
-                      </StyledBadge>
-                    </IconButton>
-                  </NavLink>
+                      </NavLink>
+                    </StyledBadge>
+                  </IconButton>
                 </Tooltip>
               </div>
               <div>
@@ -236,8 +231,8 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              {settings.map((setting,key) => (
+                <MenuItem key={key} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

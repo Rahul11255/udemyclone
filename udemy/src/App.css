@@ -6,14 +6,21 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
+/* font-family: "Poppins", sans-serif !important; */
+
 :root{
     --pfonts: "Poppins", sans-serif;
     --grey:rgb(102, 102, 102);
     --blue:#5567EE;
     --black:#222222;
+    --lgrey:#e7e4e4;
 }
 
-
+.link{
+  text-decoration: none;
+  color: var(--grey);
+}
 
 .gototop_container{
   display: flex;
@@ -42,6 +49,7 @@ cursor: pointer;
   color: var(--blue) !important;
   text-decoration: none;
   border-bottom: 2px solid var(--blue);
+  font-weight: bold !important;
 
 }
 

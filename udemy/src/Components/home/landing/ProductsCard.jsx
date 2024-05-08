@@ -4,26 +4,30 @@ import { useEffect, useState } from "react";
 import "./topproducts.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
-import { Tooltip } from "@mui/material";
+import { Autoplay } from "swiper/modules";
+import { Tooltip, Snackbar } from "@mui/material";
+import Alert from '@mui/material/Alert';
 
-const ProductsCard = ({ data }) => {
+const ProductsCard = ({ data, startSlice, endSlice }) => {
   const [slidesPerView, setSlidesPerView] = useState(4);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [addedProductTitle, setAddedProductTitle] = useState('');
   const { addItem } = useCart();
 
   const addtoCart = (product) => {
     addItem(product);
+    setAddedProductTitle(product.title);
+    setOpenSnackbar(true);
   };
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 450) {
-        setSlidesPerView(1);
+        setSlidesPerView(1.15);
       } else if (window.innerWidth <= 750) {
         setSlidesPerView(2);
       } else {
-        setSlidesPerView(4);
+        setSlidesPerView(4.15);
       }
     };
 
@@ -37,31 +41,48 @@ const ProductsCard = ({ data }) => {
   }, []); // Empty dependency array to run only once on mount
 
   return (
-    <Swiper
-      pagination={true}
-      modules={[Pagination]}
-      watchSlidesProgress={true}
-      slidesPerView={slidesPerView}
-      spaceBetween={25}
-      className="mySwiper"
-    >
-      {data.map((product, index) => (
-        <SwiperSlide key={index} className="card">
-          <div className="card_img">
-            <img src={product.thumbnail} alt={product.title} />
-            <div className="cart_buton" onClick={() => addtoCart(product)}>
-            <Tooltip title="add to cart">
-               <ShoppingCartOutlinedIcon/>
-               </Tooltip>
+    <>
+      <Swiper
+        pagination={true}
+        modules={[Autoplay]}
+        watchSlidesProgress={true}
+        slidesPerView={slidesPerView}
+        spaceBetween={25}
+        className="mySwiper"
+        autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+      >
+        {data.slice(startSlice, endSlice).map((product, index) => (
+          <SwiperSlide key={index} className="card">
+            <div className="card_img">
+              <img src={product.thumbnail} alt={product.title} />
+              <div className="cart_buton" onClick={() => addtoCart(product)}>
+                <Tooltip title="add to cart">
+                  <ShoppingCartOutlinedIcon />
+                </Tooltip>
+              </div>
             </div>
-          </div>
-          <h3>{product.title}</h3>
-          <p>₹ {product.price}</p>
-          {/* <button onClick={() => addtoCart(product)}>Add to Cart</button> */}
-          {/* <h5>Rating: {product.rating}</h5> */}
-        </SwiperSlide>
-      ))}
-    </Swiper>
+            <h3>{product.title}</h3>
+            <p>₹ {product.price}</p>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={() => setOpenSnackbar(false)}
+      >
+        <Alert severity="success" variant="filled" onClose={() => setOpenSnackbar(false)}>
+          "{addedProductTitle}" added to cart
+        </Alert>
+      </Snackbar>
+    </>
   );
 };
 

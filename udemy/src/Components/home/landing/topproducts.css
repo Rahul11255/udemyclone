@@ -88,7 +88,7 @@
 
 .cart_buton {
   position: absolute;
-  margin-left: 44%;
+  margin-left: 39%;
   margin-top: -20px;
   background-color: var(--blue);
   padding: 10px;
@@ -136,5 +136,15 @@
 @media screen and (max-width: 750px) {
   .topdeals_container {
     padding: 0px 15px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .cart_buton {
+    position: absolute;
+    margin-left: 38%;
+    margin-top: -55px;
+    color: white !important;
+    opacity: 1; /* Initially hidden */
   }
 }
