@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import { useCart } from "react-use-cart";
-// import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import Tooltip from "@mui/material/Tooltip";
@@ -23,11 +23,14 @@ import { NavLink } from "react-router-dom";
 const pages = [
   { name: "Home", link: "/" },
   { name: "Products", link: "/products" },
-  { name: "Collection", link: "/collection" },
   { name: "Pages", link: "/pages" },
   { name: "Contact Us", link: "/contact" },
 ];
 const settings = ["Profile", "Logout"];
+const auth = [
+  {name:"Login",to:"/login"},
+  {name:"Register",to:"/register"}
+];
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -3,
@@ -40,12 +43,23 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [authuser, SetAuthuser] = React.useState(null);
   
   const { totalItems } = useCart();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
+  const handleOpenUserauth=()=>{
+    SetAuthuser(event.currentTarget);
+  }
+
+  const handleCloseUserauth=()=>{
+    SetAuthuser(null);
+  }
+
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -194,6 +208,13 @@ function ResponsiveAppBar() {
                 </Tooltip>
               </div> */}
               <div>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserauth} >
+                    <PersonOutlineOutlinedIcon sx={{fontSize:30}}/>
+                  </IconButton>
+                </Tooltip>
+              </div>
+              <div>
                 <Tooltip title="Cart">
                   <IconButton>
                     <StyledBadge badgeContent={totalItems} color="primary">
@@ -204,6 +225,7 @@ function ResponsiveAppBar() {
                   </IconButton>
                 </Tooltip>
               </div>
+              
               <div>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -214,6 +236,7 @@ function ResponsiveAppBar() {
                   </IconButton>
                 </Tooltip>
               </div>
+              
             </div>
             <Menu
               sx={{ mt: "45px" }}
@@ -234,6 +257,31 @@ function ResponsiveAppBar() {
               {settings.map((setting,key) => (
                 <MenuItem key={key} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+            <Menu
+              sx={{ mt: "112px",ml:"-122px" }}
+              className="auth_menu"
+              id="menu-appbar"
+              anchorEl={authuser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(authuser)}
+              onClose={handleCloseUserauth}
+            >
+              {auth.map((auths,key) => (
+                <MenuItem key={key} onClick={handleCloseUserauth}>
+                <NavLink to={`${auths.to}`}   activeclassname="active" className="nav_list_items">
+                  <Typography textAlign="center">{auths.name}</Typography>
+                  </NavLink>
                 </MenuItem>
               ))}
             </Menu>

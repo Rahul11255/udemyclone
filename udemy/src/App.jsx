@@ -5,6 +5,7 @@ import Landing from './Components/home/landing/Landing';
 import Navbar from './Components/navbar/Navbar';
 import Offer from './Components/offers/Offer'
 import Cart from './Pages/Cart';
+import Register from './Pages/Register';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
        <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/user-cart" element={<Cart />} />
+        <Route path="/register" element={<Register />} />
        </Routes>
        <GotoTop/>
       

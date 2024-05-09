@@ -1,0 +1,135 @@
+.register_contaainer {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 100px 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.register_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.register_form_container {
+  padding: 60px;
+}
+.register_form_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+
+.register_form_text h1 {
+  font-family: var(--pfonts);
+  color: var(--black);
+  font-weight: 600;
+}
+
+.register_form_text p {
+  font-size: 14px;
+  font-family: var(--pfonts);
+  color: var(--grey);
+  font-weight: 400;
+}
+
+.register_form {
+  margin-top: 40px;
+}
+.register_form form > p {
+  color: rgb(58, 58, 58);
+  font-size: 15px;
+  padding-bottom: 5px;
+  padding-top: 17px;
+  font-weight: 500;
+}
+
+.register_form form > input {
+  width: 100%;
+  height: 43px;
+  padding: 10px 15px;
+  border: 1px solid #e2e2e2;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #ffffff;
+  font-size: 14px;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  color: #333333;
+}
+.register_form form > input:focus {
+  border: 2px solid #022231;
+  outline: none;
+}
+
+.register_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.register_btn {
+  margin-top: 30px;
+}
+
+.register_btn button {
+  background-color: var(--black);
+  padding: 7px 25px;
+  font-size: 15px;
+  color: white;
+  font-family: var(--pfonts);
+
+  border-radius: 0%;
+  font-weight: 400;
+}
+.register_btn button:hover {
+  background-color: var(--blue);
+}
+
+.register_form form > h4 {
+  color: var(--black);
+  font-family: var(--pfonts);
+  font-size: 16px;
+  align-items: center;
+  text-align: center;
+  padding-top: 17px;
+  font-weight: 500;
+}
+
+.login_link {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--pfonts);
+
+  text-align: center;
+}
+
+@media screen and (max-width: 750px) {
+  .register_contaainer {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 50px 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 230px;
+  }
+  .register_form_container {
+    padding: 20px;
+  }
+  .register_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}

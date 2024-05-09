@@ -1,10 +1,9 @@
 
 
 .services_container{
-    padding: 100px 55px;
-}
-.services{
-    padding: 0px 150px;
+    padding: 100px ;
+    width: 100%;
+
 }
 
 .service-item{
@@ -12,6 +11,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
     align-items: center;
     gap: 10px;
 }
@@ -19,6 +19,8 @@
 .service-item h3{
     font-family: "Poppins", sans-serif !important; 
     font-weight: 600;
+    font-size: 16px;
+
 }
 
 .service-item p{
@@ -43,4 +45,24 @@ color:#87CEFA;
   .animated-icon {
     animation: moveUp 1s ease infinite; /* Apply animation */
   }
-  
+
+  @media screen and (max-width:750px) {
+    .services_container{
+      padding: 50px ;
+      width: 100%;
+   }
+   .service-item h3{
+    font-family: "Poppins", sans-serif !important; 
+    font-weight: 600;
+    font-size: 16px;
+}
+
+    .service-item p{
+    font-size: 10px;
+    font-family: "Poppins", sans-serif !important; 
+    color: var(--grey);
+    font-weight: 600;
+     }
+
+  }
+

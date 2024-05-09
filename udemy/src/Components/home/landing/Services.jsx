@@ -8,7 +8,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 const Services = () => {
   return (
     <Grid container spacing={2} className='services_container'>
-     <Grid container className='services'>
+     {/* <Grid container className='services'> */}
       <Grid item xs={12} sm={6} md={4} >
         <div className="service-item">
           <div><AssignmentReturnIcon sx={{ fontSize: 40 }} className='animated-icon'/></div>
@@ -36,7 +36,7 @@ const Services = () => {
           </p>
         </div>
       </Grid>
-      </Grid>
+      {/* </Grid> */}
     </Grid>
   );
 }
