@@ -3,8 +3,9 @@ import Button from "@mui/material/Button";
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 
 const Herotext = () => {
+
   return (
-    <div className="hero_text_container">
+    <div className="hero_text_container" >
       <div>
         <p>Here to make heads turn</p>
         <h1>

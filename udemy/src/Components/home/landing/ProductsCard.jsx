@@ -7,6 +7,9 @@ import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import { Tooltip, Snackbar } from "@mui/material";
 import Alert from '@mui/material/Alert';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+
 
 const ProductsCard = ({ data, startSlice, endSlice }) => {
   const [slidesPerView, setSlidesPerView] = useState(4);
@@ -29,6 +32,7 @@ const ProductsCard = ({ data, startSlice, endSlice }) => {
       } else {
         setSlidesPerView(4.15);
       }
+      Aos.init({duration:2000})
     };
 
     handleResize();
@@ -50,13 +54,13 @@ const ProductsCard = ({ data, startSlice, endSlice }) => {
         spaceBetween={25}
         className="mySwiper"
         autoplay={{
-            delay: 3000,
+            delay: 3500,
             disableOnInteraction: false,
           }}
       >
         {data.slice(startSlice, endSlice).map((product, index) => (
-          <SwiperSlide key={index} className="card">
-            <div className="card_img">
+          <SwiperSlide key={index} className="card"  >
+            <div className="card_img" data-aos="zoom-in">
               <img src={product.thumbnail} alt={product.title} />
               <div className="cart_buton" onClick={() => addtoCart(product)}>
                 <Tooltip title="add to cart">
@@ -75,7 +79,7 @@ const ProductsCard = ({ data, startSlice, endSlice }) => {
           horizontal: 'center',
         }}
         open={openSnackbar}
-        autoHideDuration={3000}
+        autoHideDuration={1000}
         onClose={() => setOpenSnackbar(false)}
       >
         <Alert severity="success" variant="filled" onClose={() => setOpenSnackbar(false)}>

@@ -1,0 +1,46 @@
+
+
+.services_container{
+    padding: 100px 55px;
+}
+.services{
+    padding: 0px 150px;
+}
+
+.service-item{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.service-item h3{
+    font-family: "Poppins", sans-serif !important; 
+    font-weight: 600;
+}
+
+.service-item p{
+    font-size: 13px;
+    font-family: "Poppins", sans-serif !important; 
+    color: var(--grey);
+    font-weight: 600;
+}
+
+
+@keyframes moveUp {
+    0%, 100% {
+      transform: translateY(0); /* Start and end position */
+color:#87CEFA;
+    }
+    50% {
+      transform: translateY(-10px); /* Move up */
+      color: var(--blue); /* Color at midpoint */
+    }
+  }
+  
+  .animated-icon {
+    animation: moveUp 1s ease infinite; /* Apply animation */
+  }
+  

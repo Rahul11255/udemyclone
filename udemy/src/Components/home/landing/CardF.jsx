@@ -6,7 +6,7 @@ import { CardActionArea } from "@mui/material";
 
 const CardF = ({ watchimg, title }) => {
   return (
-    <Card sx={{ maxWidth: 300 }}>
+    <Card sx={{ maxWidth: 300 }} >
       <CardActionArea>
         <CardMedia
           component="img"
