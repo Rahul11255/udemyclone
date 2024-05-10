@@ -44,6 +44,15 @@ const ProductsCard = ({ data, startSlice, endSlice }) => {
     };
   }, []); // Empty dependency array to run only once on mount
 
+  const discountPrice = (price,dis)=>{
+  
+    const discountPrice = price * (dis / 100);
+    const actualPrice = price - discountPrice;
+    const roundedPrice = actualPrice.toFixed(0); // Rounds to the nearest whole number
+    return <span style={{marginRight:"5px"}}>₹{roundedPrice}</span>;
+  }
+
+
   return (
     <>
       <Swiper
@@ -54,7 +63,7 @@ const ProductsCard = ({ data, startSlice, endSlice }) => {
         spaceBetween={25}
         className="mySwiper"
         autoplay={{
-            delay: 3500,
+            delay: 3500000,
             disableOnInteraction: false,
           }}
       >
@@ -67,9 +76,12 @@ const ProductsCard = ({ data, startSlice, endSlice }) => {
                   <ShoppingCartOutlinedIcon />
                 </Tooltip>
               </div>
+              <div className="discount_btn">
+                        -{product.discountPercentage.toFixed(0)}%
+              </div>
             </div>
             <h3>{product.title}</h3>
-            <p>₹ {product.price}</p>
+            <p> {discountPrice(product.price,product.discountPercentage)}  <del> ₹{product.price}</del></p>
           </SwiperSlide>
         ))}
       </Swiper>

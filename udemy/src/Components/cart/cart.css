@@ -29,7 +29,7 @@
   width: 100%;
   display: grid;
 
-  grid-template-columns: auto 280px;
+  grid-template-columns: auto 380px;
   grid-column-gap: 10px;
 }
 
@@ -38,6 +38,13 @@
   padding: 30px;
   border: 1px dashed #e2e2e2;
 }
+.address_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px; /* Adjust the gap as needed */
+}
+
+
 
 .cart_title {
   width: 100%;
@@ -69,7 +76,7 @@
 }
 
 .product_dict {
-  width: 500px;
+  width: 400px;
   display: flex;
 }
 
@@ -196,10 +203,14 @@
   justify-content: space-between;
   border-top: 1px solid var(--lgrey);
   border-bottom: 1px solid var(--lgrey);
+ 
+  align-items: center;
   align-items: center;
 }
 
 .sub_total p{
+  display: flex;
+  justify-content: center;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
 }

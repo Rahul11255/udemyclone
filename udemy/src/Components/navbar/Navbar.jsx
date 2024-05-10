@@ -208,7 +208,7 @@ function ResponsiveAppBar() {
                 </Tooltip>
               </div> */}
               <div>
-                <Tooltip title="Open settings">
+                <Tooltip title="Login / Register">
                   <IconButton onClick={handleOpenUserauth} >
                     <PersonOutlineOutlinedIcon sx={{fontSize:30}}/>
                   </IconButton>
@@ -261,7 +261,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
             <Menu
-              sx={{ mt: "112px",ml:"-122px" }}
+              sx={{ mt: "45px",ml:"-122px" }}
               className="auth_menu"
               id="menu-appbar"
               anchorEl={authuser}

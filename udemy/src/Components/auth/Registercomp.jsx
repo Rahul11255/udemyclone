@@ -13,7 +13,7 @@ const Registercomp = () => {
           <div>
             <div className='register_form_text'>
               <h1>Create Account</h1>
-              <p>Please login below account detail</p>
+              <p>Please register below account detail</p>
             </div>
             <div className='register_form'>
              <form>

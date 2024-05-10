@@ -6,6 +6,16 @@
   padding: 0px 55px;
 }
 
+.original-price::after {
+  content: '';
+  position: absolute;
+  bottom:0; /* Position in the middle */
+  left: 0;
+  width:5%; /* Full width of the text */
+  height: 5px; /* Adjust the thickness of the line */
+  background-color: black; /* Color of the line */
+}
+
 .topdeals {
   padding: 0px 15px;
 }
@@ -81,6 +91,13 @@
 
 }
 
+.card p > del{
+  font-family: var(--pfonts);
+  color: #9A9A9A;
+
+}
+
+
 .card h5{
     font-family: var(--pfonts);
     font-size: 14px ;
@@ -117,8 +134,22 @@
   background-color: white;
   color: var(--black) !important;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 
-
+.discount_btn{
+  position: absolute;
+  background-color: var(--blue);
+  top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+  left: 20px;
 }
 
 .card:hover .cart_buton {

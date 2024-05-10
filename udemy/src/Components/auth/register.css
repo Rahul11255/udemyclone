@@ -16,6 +16,7 @@
 
 .register_form_container {
   padding: 60px;
+  background-color: var(--lgrey);
 }
 .register_form_text {
   display: flex;
