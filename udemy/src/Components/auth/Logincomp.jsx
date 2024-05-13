@@ -7,7 +7,7 @@ const Logincomp = () => {
   return (
     <div className='register_contaainer'>
     <div className='register_img'>
-      <img src={loginimg} alt="login-img" />
+      <img src={loginimg} alt="login-imgage" />
     </div>
     <div className='register_form_container'>
       <div>
