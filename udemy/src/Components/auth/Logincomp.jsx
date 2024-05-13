@@ -21,7 +21,7 @@ const Logincomp = () => {
             <input type="email" placeholder='Email' />
             <p>Password</p>
           <input type="password" placeholder='Password'/>
-            <div className='register_btn'> <Button>CREATE</Button> 
+            <div className='register_btn'> <Button>SIGN IN </Button> 
             </div>
             <h4>Don't have an account?</h4>
             <Link to={'/register'} className='login_link'>Create account</Link>

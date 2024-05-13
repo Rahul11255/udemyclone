@@ -1,3 +1,4 @@
+import Footer from "../../footer/Footer"
 import Feature from "./Feature"
 import HeroSlider from "./HeroSlider"
 import Heroimg from "./Heroimg"
@@ -14,6 +15,7 @@ const Landing = () => {
     <Topproducts/>
     <Heroimg/>
     <Services/>
+    <Footer/>
     </>
   )
 }
