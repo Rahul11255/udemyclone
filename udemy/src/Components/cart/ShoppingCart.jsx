@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import EmptyCart from "./EmptyCart";
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import DiscountIcon from '@mui/icons-material/Discount';
+import axios from 'axios';
 
 const ShoppingCart = () => {
   const { totalItems, items, updateItemQuantity, removeItem, emptyCart, isEmpty } = useCart();
@@ -39,11 +40,10 @@ const ShoppingCart = () => {
       [name]: value.trim() === "" // Check if the value is empty after trimming
     }));
   };
-
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = async () => {
     const hasEmptyFields = Object.values(address).some(value => value.trim() === "");
     if (hasEmptyFields) {
-      setErrors((prevErrors) => ({
+      setErrors(prevErrors => ({
         ...prevErrors,
         name: address.name.trim() === "",
         landmark: address.landmark.trim() === "",
@@ -76,9 +76,16 @@ const ShoppingCart = () => {
         pincode: false,
         phoneNumber: false
       });
+  
+      try {
+        const response = await axios.post("http://localhost:3000/order", orderData);
+        console.log("Order data sent successfully.", response.data);
+      } catch (error) {
+        console.error("Error sending order data:", error);
+      }
     }
   };
-
+  
 
 
   const discountPrice = (price, discount) => {
