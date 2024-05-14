@@ -6,10 +6,11 @@ import LinkIcon from '@mui/icons-material/Link';
  import TwitterIcon from '@mui/icons-material/Twitter';
  import LinkedInIcon from '@mui/icons-material/LinkedIn';
  import InstagramIcon from '@mui/icons-material/Instagram';
+ import CopyrightIcon from '@mui/icons-material/Copyright';
 
 const Footer = () => {
   return (
-
+<>
     <div className="footer">
       <Grid container spacing={2}>
         {/* First Grid */}
@@ -22,7 +23,6 @@ const Footer = () => {
                 <div> <TwitterIcon sx={{color:"white",fontSize:25}}/> </div>
                 <div> <LinkedInIcon sx={{color:"white",fontSize:25}}/> </div>
                 <div> <InstagramIcon sx={{color:"white",fontSize:25}}/> </div>
-             
                 </div>
           </div>
         </Grid>
@@ -41,11 +41,23 @@ const Footer = () => {
           <div className='footer_right'>
               <h3>Newsletter</h3>
               <div className='inputbtn'> <input type="text" placeholder='Enter your email..' /> <Button>SUBSCRIBE</Button> </div>
-              <div>Div 3</div>
+              <div style={{marginTop:"12px",display:"flex",gap:"5px"}}>
+                <img src="https://hublet-store.myshopify.com/cdn/shop/files/p1.png?v=1626316013" alt=""  />
+                <img src="https://hublet-store.myshopify.com/cdn/shop/files/p4.png?v=1626316013" alt=""  />
+                <img src="https://hublet-store.myshopify.com/cdn/shop/files/p5.png?v=1626316013" alt=""  />
+                <img src="https://hublet-store.myshopify.com/cdn/shop/files/p2.png?v=1626316013" alt=""  />
+                <img src="https://hublet-store.myshopify.com/cdn/shop/files/p3.png?v=1626316013" alt=""  />
+              </div>
           </div>
         </Grid>
       </Grid>
+      
     </div>
+    <div className='footer_bottom'>
+      <p> Copyright   <CopyrightIcon sx={{fontSize:16,marginLeft:"5px"}}/>2021 Hublet By Qodex </p>
+    </div>
+
+    </>
   );
 }
 

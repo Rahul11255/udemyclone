@@ -1,4 +1,20 @@
 const Order = require("../models/Order")
+const Product = require("../models/Product")
+
+const createProduct= async(req,res)=>{
+     const {title,slug,category,price,thumbnail,rating,discountPercentage,description,images,stock,brand} = req.body
+}
+
+
+
+
+
+
+
+
+
+
+
 const ordered = async (req, res) => {
     try {
       const userOrder = req.body;

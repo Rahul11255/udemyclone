@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const {generateToken} = require('../jwt')
 
 const signupUser = async (req, res) => {
   try {
@@ -9,7 +10,6 @@ const signupUser = async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ error: "Email is already registered" });
     }
-
     // Hash the user's password
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
@@ -43,9 +43,14 @@ const loginUser = async (req, res) => {
     if (!validate) {
       return res.status(400).json({ error: "Invalid  password" });
     }
+    
+    const payload = {
+      id: user.id,
+    }
+    const token = generateToken(payload)
     res
       .status(200)
-      .json({ message: "Login successful", user: user });
+      .json({ message: "Login successful", user: user ,token:token});
   } catch (error) {
     // Log and handle errors
     console.error(error);
