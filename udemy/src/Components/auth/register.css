@@ -27,6 +27,28 @@
   text-align: center;
 }
 
+.message_container{
+  width: 100%;
+  height: auto;
+  margin-top: 15px;
+  padding-bottom: 20px;
+}
+
+.message_container h3{
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  font-family: var(--pfonts);
+  text-align: center;
+}
+.succ{
+ color: #0BDA51;
+}
+.err{
+  color: #EF0107;
+}
+
 .register_form_text h1 {
   font-family: var(--pfonts);
   color: var(--black);
@@ -41,7 +63,7 @@
 }
 
 .register_form {
-  margin-top: 40px;
+  margin-top: 0px;
 }
 .register_form form > p {
   color: rgb(58, 58, 58);

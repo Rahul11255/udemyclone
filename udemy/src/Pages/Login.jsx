@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logincomp from '../Components/auth/Logincomp';
 
 
 const Login = () => {
+  const navigate = useNavigate()
+  useEffect(() => {
+    // Check if user is already logged in
+    if (localStorage.getItem("isLoggedIn") === "true") {
+        navigate("/")
+    }
+  }, [navigate]);
   return (
     <>
         <section className="track_link">

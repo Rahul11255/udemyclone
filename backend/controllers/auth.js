@@ -5,7 +5,7 @@ const {generateToken} = require('../jwt')
 const signupUser = async (req, res) => {
   try {
     const saltRounds = 10;
-    const { fname, lname, email, password } = req.body;
+    const { fname, lname, email, password,role } = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: "Email is already registered" });
@@ -13,7 +13,7 @@ const signupUser = async (req, res) => {
     // Hash the user's password
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    const newUser = new User({ fname, lname, email, password: hashedPassword });
+    const newUser = new User({ fname, role,lname, email, password: hashedPassword });
     const savedUSer = await newUser.save();
 
     res.status(200).json({

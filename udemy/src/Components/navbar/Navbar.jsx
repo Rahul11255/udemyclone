@@ -1,5 +1,5 @@
 // ResponsiveAppBar.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,18 +18,16 @@ import { MenuItem } from "@mui/material";
 import "./navbar.css";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import UserSettingsMenu from "./UserSettingsMenu";
+import UserAuthMenu from "./UserAuthMenu";
 
 const pages = [
   { name: "Home", link: "/" },
   { name: "Products", link: "/products" },
   { name: "Pages", link: "/pages" },
   { name: "Contact Us", link: "/contact" },
-];
-const settings = ["Profile", "Logout"];
-const auth = [
-  {name:"Login",to:"/login"},
-  {name:"Register",to:"/register"}
 ];
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -41,9 +39,16 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [authuser, SetAuthuser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [authuser, SetAuthuser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    // Check if user is logged in
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(loggedIn);
+  }, []);
+
   
   const { totalItems } = useCart();
 
@@ -164,7 +169,6 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-
           <Box
             sx={{
               flexGrow: 1,
@@ -185,7 +189,6 @@ function ResponsiveAppBar() {
               ))}
             </ul>
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             <div className="navbar_right">
               <div className="search-box">
@@ -200,20 +203,27 @@ function ResponsiveAppBar() {
                   placeholder="Type to Search..."
                 />
               </div>
-              {/* <div>
-                <Tooltip title="Wishlist">
-                  <IconButton>
-                    <FavoriteBorderIcon />
-                  </IconButton>
-                </Tooltip>
-              </div> */}
-              <div>
+              { !isLoggedIn && (
+                <div>
                 <Tooltip title="Login / Register">
                   <IconButton onClick={handleOpenUserauth} >
                     <PersonOutlineOutlinedIcon sx={{fontSize:30}}/>
                   </IconButton>
                 </Tooltip>
               </div>
+              )}
+              { isLoggedIn && localStorage.getItem("role") === "admin" &&  (
+                <div>
+                <Tooltip title="Admin">
+                 <Link to={'/admin'} className="nav_list_items" >
+                  <IconButton>
+                    <AdminPanelSettingsIcon sx={{fontSize:30}}/>
+                  </IconButton>
+                  </Link>
+                </Tooltip>
+              </div>
+              )}
+             
               <div>
                 <Tooltip title="Cart">
                   <IconButton>
@@ -225,8 +235,8 @@ function ResponsiveAppBar() {
                   </IconButton>
                 </Tooltip>
               </div>
-              
-              <div>
+              { isLoggedIn && (
+                <div>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
@@ -236,55 +246,11 @@ function ResponsiveAppBar() {
                   </IconButton>
                 </Tooltip>
               </div>
-              
+              )}
+             
             </div>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting,key) => (
-                <MenuItem key={key} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-            <Menu
-              sx={{ mt: "45px",ml:"-122px" }}
-              className="auth_menu"
-              id="menu-appbar"
-              anchorEl={authuser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(authuser)}
-              onClose={handleCloseUserauth}
-            >
-              {auth.map((auths,key) => (
-                <MenuItem key={key} onClick={handleCloseUserauth}>
-                <NavLink to={`${auths.to}`}   activeclassname="active" className="nav_list_items">
-                  <Typography textAlign="center">{auths.name}</Typography>
-                  </NavLink>
-                </MenuItem>
-              ))}
-            </Menu>
+            <UserSettingsMenu anchorEl={anchorElUser} handleClose={handleCloseUserMenu} />
+            <UserAuthMenu anchorEl={authuser} handleClose={handleCloseUserauth} />
           </Box>
         </Toolbar>
       </Container>

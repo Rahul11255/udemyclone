@@ -14,7 +14,7 @@ const product_route = require('./routes/product')
 const PORT = process.env.PORT 
 app.use(fileupload({
     useTempFiles:true
-  }))
+}))
 app.use(morgan('dev'));
 app.use(body_parser.json())
 app.use(express.json());
