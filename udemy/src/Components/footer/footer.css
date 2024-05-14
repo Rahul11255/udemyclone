@@ -3,14 +3,114 @@
  width: 100%;
  height: auto;
  padding: 110px 65px;
+
 }
 
-.footer_links ul li{
+.footer_links li{
  list-style: none;
  display: flex;
  justify-content: flex-start;
- /* align-items: center; */
+ font-family: var(--pfonts);
  text-align: center;
- gap: 5px;
+ gap: 10px;
+ padding-bottom: 10px;
+ padding-left: 30px;
+ padding-bottom: 15px;
+ transition: color 0.5s ease-in-out;
+ cursor: pointer;
+
+}
+
+.inputbtn{
+    margin-top: 20px;
+}
+
+.inputbtn input{
+    width: 63%;
+    height: 50px;
+    font-family: var(--pfonts);
+    padding: 2px 5px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--grey);
+}
+
+.inputbtn button{
+   width: 140px;
+   height: 50px;
+   background-color: var(--blue) ;
+   color: white;
+   font-size: 16px;
+   border-radius: 0%;
+}
+
+.inputbtn button:hover{
+    background-color: var(--black) ;
+ }
  
+
+
+.footer_links li:hover{
+    color: var(--blue) !important;
+}
+
+.footer_img {
+    width: 100%;
+    height: 60px;
+}
+.footer_img img{
+    width: 50%;
+    height: 100%;
+}
+
+.footer_left p{
+    color: var(--grey);
+    font-family: var(--pfonts);
+    font-size: 14px;
+    padding-top:10px ;
+    line-height: 1.8;
+}
+
+.footer_icon{
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer_icon div{
+    width: 38px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 28px !important;
+    height: 38px;
+}
+.footer_icon div:nth-child(1){
+    background-color: white;
+}
+.footer_icon div:nth-child(2){
+    background-color: #8DD0F0;
+    transition: all .5s ease-in-out;
+
+}
+.footer_icon div:nth-child(3){
+    background-color: #328AB5;
+    transition: all .5s ease-in-out;
+
+}
+.footer_icon div:nth-child(4){
+    background-color: #E357A2;
+    transition: all .5s ease-in-out;
+
+}
+.footer_icon div:nth-child(2):hover{
+    background-color:var(--blue);
+}
+.footer_icon div:nth-child(3):hover{
+    background-color:var(--blue);
+}
+.footer_icon div:nth-child(4    ):hover{
+    background-color:var(--blue);
 }
