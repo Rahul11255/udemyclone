@@ -26,7 +26,7 @@ const createProduct = async (req, res) => {
   try {
     // Check if user has admin role
     if (!(await checkAdminRole(req.user.id))) {
-      return res.status(403).json({ message: "user does not have admin role" });
+      return res.status(403).json({ message: "User does not have admin role" });
     }
 
     const {
@@ -45,27 +45,20 @@ const createProduct = async (req, res) => {
     // Upload thumbnail
     const thumbnailUpload = await cloudinary.uploader.upload(req.files.thumbnail.tempFilePath);
     // Remove thumbnail temp file
-    fs.unlink(req.files.thumbnail.tempFilePath, (err) => {
-      if (err) {
-        console.error("Error deleting thumbnail temp file:", err);
-      }
-    });
+    fs.unlinkSync(req.files.thumbnail.tempFilePath);
+    console.log("Thumbnail temp file deleted.");
 
     // Upload images
     const imagesUploadPromises = req.files.images.map(async (image) => {
       const result = await cloudinary.uploader.upload(image.tempFilePath);
       // Remove image temp file
-      fs.unlink(image.tempFilePath, (err) => {
-        if (err) {
-          console.error("Error deleting image temp file:", err);
-        }
-      });
+      fs.unlinkSync(image.tempFilePath);
+      console.log("Image temp file deleted.");
       return result.url;
     });
 
     // Wait for all images to upload
     const imagesUrls = await Promise.all(imagesUploadPromises);
-
 
     // Save data to database
     const product = await Product.create({
@@ -91,6 +84,7 @@ const createProduct = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
 
 
 // Create order

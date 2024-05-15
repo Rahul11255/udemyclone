@@ -1,0 +1,35 @@
+
+
+.error_success_create{
+    width: 100%;
+    height: 30px;
+    font-family: var(--pfonts);
+    text-transform: capitalize;
+    font-size: 20px !important;
+    font-weight: 400;
+}
+
+.thumbnail_file_button p{
+    width: auto !important ;
+    height: 40px !important;
+    background-color:var(--blue);
+    color: white;
+    font-family: var(--pfonts);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: background-color .5s ease-in-out;
+}
+
+.thumbnail_file_button p:active{
+ transform: scale(0.95);
+}
+
+.thumbnail_file_button p:hover{
+    background-color: var(--black);
+   
+}
