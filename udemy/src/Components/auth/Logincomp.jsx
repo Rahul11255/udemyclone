@@ -42,7 +42,7 @@ const Logincomp = () => {
         if (role === "admin") {
           navigate("/admin");
         } else {
-          navigate("/");
+          window.location.href = "/";
         }
       }, 1000); 
     } catch (err) {
