@@ -85,6 +85,52 @@ const createProduct = async (req, res) => {
   }
 };
 
+const getAllProducts = async (req ,res)=>{
+     try {
+      
+      const products = await Product.find({})
+      res.status(200).json(products)
+
+     } catch (error) {
+          console.error(error);
+      res.status(500).json({ error: "An error occurred, products not found" });
+     }
+}
+
+
+const getSingleProducts = async (req ,res)=>{
+  try {
+   const slug = req.params.slug.toLowerCase();
+   const products = await Product.findOne({ slug })
+   res.status(200).json(products)
+  } catch (error) {
+       console.error(error);
+   res.status(500).json({ error: "An error occurred, products not found" });
+  }
+}
+
+
+const updateProduct = async (req, res, next) => {
+  try {
+    const slug = req.params.slug.toLowerCase();
+    const product = await Product.findOne({ slug });
+
+    if (!product) {
+      return res.status(404).json({ msg: "Product not found" });
+    }
+
+    const updatedProduct = await Product.findOneAndUpdate({ slug }, req.body, {
+      new: true,
+    });
+
+    res.status(200).json({ msg: "Product updated successfully", data: updatedProduct });
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+
 
 
 // Create order
@@ -102,4 +148,4 @@ const ordered = async (req, res) => {
   }
 };
 
-module.exports = { ordered, createProduct };
+module.exports = { ordered, createProduct ,getAllProducts,getSingleProducts,updateProduct };
