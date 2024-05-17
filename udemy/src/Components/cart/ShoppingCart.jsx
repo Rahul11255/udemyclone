@@ -169,6 +169,7 @@ const ShoppingCart = () => {
           </div>
         </div>
         <CartTotal
+          handleAddressChange={handleAddressChange}
           totalAmount={totalAmount}
           pricewithoutdiscount={pricewithoutdiscount}
           discount={discount}

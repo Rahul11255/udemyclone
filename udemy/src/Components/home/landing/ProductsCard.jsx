@@ -9,6 +9,7 @@ import { Tooltip, Snackbar } from "@mui/material";
 import Alert from '@mui/material/Alert';
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import { Link } from "react-router-dom";
 
 
 const ProductsCard = ({ data, startSlice, endSlice }) => {
@@ -70,7 +71,7 @@ const ProductsCard = ({ data, startSlice, endSlice }) => {
         {data.slice(startSlice, endSlice).map((product, index) => (
           <SwiperSlide key={index} className="card"  >
             <div className="card_img" data-aos="zoom-in">
-              <img src={product.thumbnail} alt={product.title} />
+           <Link to={`/product/` + product.slug }>  <img src={product.thumbnail} alt={product.title} /> </Link> 
               <div className="cart_buton" onClick={() => addtoCart(product)}>
                 <Tooltip title="add to cart">
                   <ShoppingCartOutlinedIcon />

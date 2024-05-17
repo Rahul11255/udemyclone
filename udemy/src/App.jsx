@@ -9,6 +9,7 @@ import Cart from './Pages/Cart';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import Admin from './Pages/Admin';
+import SingleProduct from './Pages/SingleProduct';
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/product/:slug" element={<SingleProduct />} />
+        
+
       </Routes>
       <GotoTop/>
     </>

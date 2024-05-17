@@ -13,6 +13,7 @@ const CartTotal = ({
   address,
   errors,
   handleAddressChange,
+
 }) => {
   return (
     <div className="cart_total">

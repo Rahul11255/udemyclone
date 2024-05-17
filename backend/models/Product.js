@@ -12,6 +12,13 @@ const productSchema = new mongoose.Schema({
   images: { type: [String], required: true },
   stock: { type: Number, required: true },
   brand: { type: String, required: true },
+  id: {
+    type: String,
+    default: function () {
+      return Date.now().toString(); // Picks current time as ID
+    },
+    unique: true // Ensure uniqueness
+  }
 },{ timestamps: true });
 
 module.exports = mongoose.model('Product',productSchema)

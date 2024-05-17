@@ -11,8 +11,8 @@ const Topproducts = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://dummyjson.com/products");
-      const slicedData = response.data.products
+      const response = await axios.get("http://localhost:3000/products");
+      const slicedData = response.data.product
       setData(slicedData); 
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -34,7 +34,7 @@ const Topproducts = () => {
         </div>
         <div className="topdeals_bottom">
           <ProductsCard data={data}  startSlice={0} endSlice={10}/>
-          <ProductsCard data={data}  startSlice={11} endSlice={20}/>
+          {/* <ProductsCard data={data}  startSlice={11} endSlice={20}/> */}
         </div>
       </div>
     </section>

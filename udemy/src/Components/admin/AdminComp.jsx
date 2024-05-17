@@ -23,7 +23,11 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Dashboard from './Dashboard';
 import CreateProduct from './createproduct/CreateProduct';
-
+import ListofProducts from './list of products/ListofProducts';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import HomeIcon from '@mui/icons-material/Home';
+import { Link } from 'react-router-dom';
+import OrderList from './orderlist/OrderList';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -147,42 +151,31 @@ export default function AdminComp() {
           icons={<AddCircleIcon/>}
         />
          <Listitems
-          // selected={menuData === "dashboard"}
-        //   onClick={() => setMenudata("dashboard")}
-          text={"DashBoard"}
-          icons={<DashboardIcon/>}
+          selected={menuData === "ListofProducts"}
+          onClick={() => setMenudata("ListofProducts")}
+          text={"List of Products"}
+          icons={<FormatListNumberedIcon/>}
+        />
+        <Listitems
+          selected={menuData === "listoforders"}
+          onClick={() => setMenudata("listoforders")}
+          text={"List of Order"}
+          icons={<FormatListNumberedIcon/>}
         />
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+         <ListItemButton>
+          <Link to={'/'}> <ListItemText> <HomeIcon sx={{fontSize:33,color:"#5567EE"}}/> </ListItemText></Link>
+         </ListItemButton>
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 1 }}>
         <DrawerHeader />
         {menuData === "dashboard" && <Dashboard/>}
         {menuData === "createProduct" && <CreateProduct/>}
+        {menuData === "ListofProducts" && <ListofProducts/>}
+        {menuData === "listoforders" && <OrderList/>}
       </Box>
     </Box>
   );

@@ -1,0 +1,29 @@
+
+
+.listofproducts_container{
+   
+    width: 1150px;
+    height: auto;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow:hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.thumb_img{
+    width: 50px !important;
+    height: 140px !important;
+}
+
+.thumb_img img{
+    width: 100%;
+    height: 100%;
+}
+
+/* .table_scroll {
+    overflow-x: auto;
+  } */
+  

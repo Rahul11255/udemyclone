@@ -89,7 +89,7 @@ const getAllProducts = async (req ,res)=>{
      try {
       
       const products = await Product.find({})
-      res.status(200).json(products)
+      res.status(200).json({product:products})
 
      } catch (error) {
           console.error(error);
@@ -148,4 +148,16 @@ const ordered = async (req, res) => {
   }
 };
 
-module.exports = { ordered, createProduct ,getAllProducts,getSingleProducts,updateProduct };
+const getAllOrders= async (req,res)=>{
+  try{
+  const allorders = await Order.find({})
+    res.status(200).json(allorders)
+  }catch(error){
+    console.error(error);
+    res.status(500).json({ error: "An error occurred, products not found" });
+  }
+}
+
+
+
+module.exports = { ordered, createProduct ,getAllProducts,getSingleProducts,updateProduct ,getAllOrders};
