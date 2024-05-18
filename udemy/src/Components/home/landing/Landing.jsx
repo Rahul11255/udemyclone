@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import Footer from "../../footer/Footer"
 import Feature from "./Feature"
 import HeroSlider from "./HeroSlider"
@@ -7,6 +8,11 @@ import Services from "./Services"
 import Topproducts from "./Topproducts"
 
 const Landing = () => {
+  
+  useEffect(()=>{
+     document.title = "Aapka khud ka Bazar"
+  })
+
   return (
     <>
     <HeroSlider/>

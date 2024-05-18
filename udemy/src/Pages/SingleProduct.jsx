@@ -9,6 +9,8 @@ const SingleProduct = () => {
   const [data, setData] = useState(""); 
   const { slug } = useParams();
 
+  const title = slug.replace(/-/g,' ')
+
   const fetchData = async () => {
     try {
       const response = await axios.get(`http://localhost:3000/product/${slug}`);
@@ -21,7 +23,8 @@ const SingleProduct = () => {
 
   useEffect(() => {
     fetchData();
-  }, []); 
+    document.title = title.toLocaleLowerCase()
+  }, [slug]); 
 
   return (
     <>

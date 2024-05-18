@@ -138,6 +138,7 @@ const ordered = async (req, res) => {
   try {
     const userOrder = req.body;
     const newOrder = await Order.create(userOrder);
+    
     res.status(200).json({
       message: "Ordered successfully",
       order: newOrder,

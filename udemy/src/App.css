@@ -15,6 +15,7 @@
     --blue:#5567EE;
     --black:#222222;
     --lgrey:#e7e4e4;
+    --lgreen:#32CD32;
 }
 
 .link{
@@ -44,6 +45,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 cursor: pointer;
+
 }
 .active{
   color: var(--blue) !important;
