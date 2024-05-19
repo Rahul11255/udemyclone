@@ -75,10 +75,9 @@
     padding-bottom: 5px;
 }
 
-.card:hover h3 {
-  white-space: normal; 
-  overflow:visible;
-}
+  .card:hover h3 {
+    color: var(--blue);
+  }
 
 
 

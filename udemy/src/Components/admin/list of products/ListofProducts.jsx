@@ -10,6 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import axios from 'axios';
 import "./list.css"
 import { Button } from '@mui/material';
+import Loading from '../../Loading';
 
 const columns = [
   { id: 'sno', label: 'S.no', minWidth: 170 },
@@ -28,6 +29,8 @@ export default function ListOfProducts() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [products, setProducts] = useState([]);
+  const [loading,setLoading] = useState(false)
+  const [error ,setError] = useState(null)
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -39,11 +42,16 @@ export default function ListOfProducts() {
   };
 
   const fetchData = async () => {
+    setLoading(true)
+    setError(null)
     try {
       const response = await axios.get('http://localhost:3000/products');
       setProducts(response.data.product);
     } catch (error) {
       console.log(error);
+      setError(error.message)
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -55,6 +63,13 @@ export default function ListOfProducts() {
   return (
     <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
       <div className='listofproducts_container'>
+      {loading ? (
+          <Loading/>
+        ) : error ? (
+          <p>Error: {error}</p>
+        ) : products.length === 0 ? (
+          <p>Orders not found.</p>
+        ) : (
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
           <TableContainer sx={{ maxHeight: 440 }}>
             <Table stickyHeader aria-label="sticky table">
@@ -102,6 +117,7 @@ export default function ListOfProducts() {
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Paper>
+        )}
       </div>
     </div>
   );

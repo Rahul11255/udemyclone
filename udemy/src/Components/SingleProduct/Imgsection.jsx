@@ -35,8 +35,8 @@ const Imgsection = ({userdata}) => {
                 },
                 largeImage: {
                   src: productImg,
-                  width: 1200,
-                  height: 1200,
+                  width: 1400,
+                  height: 1000,
                 },
               }}
             />

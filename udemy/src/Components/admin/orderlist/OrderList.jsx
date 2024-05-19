@@ -13,11 +13,16 @@ import myordericon from "../../../assets/courier.png";
 import "./order.css";
 import moment from "moment";
 import axios from "axios";
+import Loading from "../../Loading";
 
 const OrderList = () => {
   const [filter, setFilter] = useState("");
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleFilterChange = (event) => {
@@ -25,11 +30,16 @@ const OrderList = () => {
   };
 
   const fetchData = async () => {
+    setLoading(true)
+    setError(null)
     try {
       const response = await axios.get("http://localhost:3000/orders");
       setData(response.data.order);
     } catch (error) {
       console.error(error);
+      setError(error.message)
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -86,6 +96,14 @@ const OrderList = () => {
         <p className="order_td_cell">Filter by Order ID, Date, City, or Customer name</p>
       </div>
       <div className="order_table_data">
+      {loading ? (
+          <Loading/>
+        ) : error ? (
+          <p>Error: {error}</p>
+        ) : filteredData.length === 0 ? (
+          <p>Orders not found.</p>
+        ) : (
+          <>
         <TableContainer>
           <Table sx={{ border: "1px solid grey" }}>
             <TableHead>
@@ -267,6 +285,9 @@ const OrderList = () => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+        </>
+        )}
+
       </div>
     </div>
   );

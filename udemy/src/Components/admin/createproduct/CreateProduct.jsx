@@ -5,6 +5,8 @@ import {
   Typography,
   Container,
   Grid,
+  Select, MenuItem,
+  FormControl ,
   CircularProgress,
 } from "@mui/material";
 import axios from "axios";
@@ -129,13 +131,22 @@ const CreateProduct = () => {
       setIsLoading(false); // Set loading state to false regardless of success or failure
     }
   };
+ 
+  const dropdownOptions = [
+    { value: null , label: 'Select Category' },
+    { value: 'Decor lighting Accessories', label: 'Decor lighting Accessories' },
+    { value: 'Smart Watch', label: 'Smart Watch' },
+    { value: 'Neon light', label: 'Neon Light' },
+    { value: 'Ear Buds', label: 'Ear Buds' },
+  ];
+
 
   return (
     <Container>
       <Typography variant="h4" align="center" gutterBottom sx={{ color: "" }}>
         Create Product
       </Typography>
-      <Typography align="center" className="error_success_create" gutterBottom>
+      <div align="center"  className="error_success_create" >
         <p
           style={{
             color: productData.message.includes("successfully")
@@ -145,7 +156,7 @@ const CreateProduct = () => {
         >
           {productData.message}
         </p>
-      </Typography>
+      </div>
 
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
@@ -159,13 +170,26 @@ const CreateProduct = () => {
             />
           </Grid>
           <Grid item xs={12} sm={4}>
-            <TextField
+            {/* <TextField
               label="category"
               name="category"
               value={productData.category}
               onChange={handleChange}
               fullWidth
-            />
+            /> */}
+            {/* <InputLabel id="dropdown-category-label">Dropdown Category</InputLabel> */}
+          <select
+            name="category"
+            value={productData.category}
+            onChange={handleChange}
+            style={{ width: '100%', padding: '18px', borderColor: 'rgba(0, 0, 0, 0.23)', borderRadius: '4px', color: 'red' ,fontSize:"18px",color:"#5567EE" }}
+          >
+            {dropdownOptions.map((option) => (
+              <option key={option.value} style={{color:"#222222",fontSize:"18px", padding:"10px"}} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField

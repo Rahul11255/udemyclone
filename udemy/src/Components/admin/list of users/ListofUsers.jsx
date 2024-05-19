@@ -15,6 +15,7 @@ import {
 
 import moment from "moment";
 import axios from "axios";
+import Loading from '../../Loading';
 
 const ListofUsers = () => {
   const [user, setUser] = useState([]);
@@ -85,7 +86,7 @@ const ListofUsers = () => {
       </div>
       <div className='users_table_data'>
         {loading ? (
-          <div>Loading...</div>
+          <Loading/>
         ) : error ? (
           <p>Error: {error}</p>
         ) : filteredUsers.length === 0 ? (
@@ -107,9 +108,9 @@ const ListofUsers = () => {
                   <TableCell className='user_th_cell'>
                     Register Date
                   </TableCell>
-                  <TableCell className='user_th_cell'>
+                  {/* <TableCell className='user_th_cell'>
                     Action
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -127,9 +128,9 @@ const ListofUsers = () => {
                     <TableCell className='user_td_cell'>
                       {moment(data.updatedAt).format("MMMM Do, h:mm a")}
                     </TableCell>
-                    <TableCell className='user_td_cell'>
+                    {/* <TableCell className='user_td_cell'>
                       <Button>Delete</Button>
-                    </TableCell>
+                    </TableCell> */}
                   </TableRow>
                 ))}
               </TableBody>
