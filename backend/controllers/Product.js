@@ -149,15 +149,33 @@ const ordered = async (req, res) => {
   }
 };
 
-const getAllOrders= async (req,res)=>{
-  try{
-  const allorders = await Order.find({})
-    res.status(200).json(allorders)
-  }catch(error){
+const getAllOrders = async (req, res) => {
+  try {
+    // Fetch all orders and sort them by creation date in descending order
+    const allOrders = await Order.find({}).sort({ createdAt: -1 });
+
+    // Process orders to remove 'images' field from 'items' array
+    const ordersWithoutImages = allOrders.map(order => {
+      const itemsWithoutImages = order.items.map(item => {
+        const { images, description, brand, rating, ...itemWithoutImages } = item.toObject(); // Convert item to plain object and exclude images
+        return itemWithoutImages;
+      });
+      return {
+        ...order.toObject(),
+        items: itemsWithoutImages
+      };
+    });
+
+    res.status(200).json({ order: ordersWithoutImages });
+  } catch (error) {
     console.error(error);
     res.status(500).json({ error: "An error occurred, products not found" });
   }
-}
+};
+
+
+module.exports = { getAllOrders };
+
 
 
 

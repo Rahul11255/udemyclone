@@ -56,10 +56,11 @@ const ShoppingCart = () => {
       const orderData = {
         items: items,
         address: address,
-        totalAmount: totalAmount
+        totalAmount: totalAmount,
+        discount:discount,
+        pricewithoutdiscount:pricewithoutdiscount
       };
       console.log("Order placed:", orderData);
-      emptyCart();
       setAddress({
         name: "",
         landmark: "",
@@ -81,6 +82,7 @@ const ShoppingCart = () => {
         const response = await axios.post("http://localhost:3000/order", orderData);
         console.log("Order data sent successfully.", response.data);
         console.log("Order data sent successfully.", response.data.message);
+      emptyCart();
         setMessage(response.data.message)
       } catch (error) {
         console.error("Error sending order data:", error);

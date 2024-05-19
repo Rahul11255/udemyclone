@@ -17,6 +17,8 @@ const itemSchema = new mongoose.Schema({
 
 // Define the schema for the address
 const addressSchema = new mongoose.Schema({
+  name:String,
+  phoneNumber:Number,
   landmark: String,
   houseNo: String,
   city: String,
@@ -28,8 +30,11 @@ const orderSchema = new mongoose.Schema({
   items: [itemSchema], // Array of items
   address: addressSchema, // Address object
   totalAmount: Number,
-  createdAt: { type: Date, default: Date.now } // Timestamp of when the order was created
-});
+  discount:Number,
+  pricewithoutdiscount:Number,
+  userid:String,
+  
+},{ timestamps: true });
 
 // Create a model based on the order schema
 const Order = mongoose.model('Order', orderSchema);

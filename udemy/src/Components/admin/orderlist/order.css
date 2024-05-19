@@ -1,0 +1,44 @@
+
+.order_container{
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+.myorders_Text{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: var(--pfonts);
+    gap: 10px;
+    font-size: 23px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.order_table_data{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+
+.order_filter{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.order_title{
+  padding: 0px !important;
+  margin-top: 0px;
+  width: auto !important;
+}

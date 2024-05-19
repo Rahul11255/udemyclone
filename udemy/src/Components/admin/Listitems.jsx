@@ -10,12 +10,15 @@ const Listitems = ({ selected, onClick, text ,icons }) => {
     <>
        <ListItem disablePadding selected={selected} onClick={onClick}>
       <ListItemButton
-        // sx={{
-        //   backgroundColor: selected ? ' rgba(6, 82, 72, 0.74)' : '', // Change background color when se
-        //   color:selected ? 'white':"black",
-        // }}
+        sx={{
+          backgroundColor: selected ? "#B9D9EB":""
+        }}
       >
-        <ListItemIcon >
+        <ListItemIcon 
+        sx={{
+          color: selected ? "#5567EE":""
+        }}
+        >
          {icons}
         </ListItemIcon>
         <ListItemText primary={text} />

@@ -61,6 +61,7 @@ const CartTotal = ({
           <TextField
             label="Phone Number"
             variant="outlined"
+            type="number"
             name="phoneNumber"
             value={address.phoneNumber}
             onChange={handleAddressChange}
