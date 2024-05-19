@@ -28,7 +28,9 @@ import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link } from "react-router-dom";
 import OrderList from "./orderlist/OrderList";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import ordericon from "../../assets/checklist.png";
+import ListofUsers from "./list of users/ListofUsers";
 
 const drawerWidth = 240;
 
@@ -100,7 +102,7 @@ const Drawer = styled(MuiDrawer, {
 export default function AdminComp() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [menuData, setMenudata] = React.useState("listoforders");
+  const [menuData, setMenudata] = React.useState("listofusers");
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -174,10 +176,10 @@ export default function AdminComp() {
               </ListItemText> 
           </ListItemButton>
           <Listitems
-            // selected={menuData === "listoforders"}
-            // onClick={() => setMenudata("listoforders")}
-            text={"List of Order"}
-            icons={<FormatListNumberedIcon />}
+            selected={menuData === "listofusers"}
+            onClick={() => setMenudata("listofusers")}
+            text={"List of Users"}
+            icons={<PeopleAltIcon />}
           />
         </List>
         <Divider />
@@ -198,6 +200,7 @@ export default function AdminComp() {
         {menuData === "createProduct" && <CreateProduct />}
         {menuData === "ListofProducts" && <ListofProducts />}
         {menuData === "listoforders" && <OrderList />}
+        {menuData === "listofusers" && <ListofUsers />}
       </Box>
     </Box>
   );

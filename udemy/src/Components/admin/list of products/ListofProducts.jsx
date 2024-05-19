@@ -49,6 +49,7 @@ export default function ListOfProducts() {
 
   useEffect(() => {
     fetchData();
+    document.title = "List of All Products"
   }, []);
 
   return (

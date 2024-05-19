@@ -1,11 +1,11 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
-const {generateToken} = require('../jwt')
+const { generateToken } = require("../jwt");
 
 const signupUser = async (req, res) => {
   try {
     const saltRounds = 10;
-    const { fname, lname, email, password,role } = req.body;
+    const { fname, lname, email, password, role } = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: "Email is already registered" });
@@ -13,7 +13,13 @@ const signupUser = async (req, res) => {
     // Hash the user's password
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    const newUser = new User({ fname, role,lname, email, password: hashedPassword });
+    const newUser = new User({
+      fname,
+      role,
+      lname,
+      email,
+      password: hashedPassword,
+    });
     const savedUSer = await newUser.save();
 
     res.status(200).json({
@@ -26,7 +32,6 @@ const signupUser = async (req, res) => {
     res.status(500).json({ error: "An error occurred while registering" });
   }
 };
-
 
 const loginUser = async (req, res) => {
   try {
@@ -43,14 +48,14 @@ const loginUser = async (req, res) => {
     if (!validate) {
       return res.status(400).json({ error: "Invalid  password" });
     }
-    
+
     const payload = {
       id: user.id,
-    }
-    const token = generateToken(payload)
+    };
+    const token = generateToken(payload);
     res
       .status(200)
-      .json({ message: "Login successful", user: user ,token:token});
+      .json({ message: "Login successful", user: user, token: token });
   } catch (error) {
     // Log and handle errors
     console.error(error);
@@ -58,14 +63,17 @@ const loginUser = async (req, res) => {
   }
 };
 
+// get all users
 
+const getAllusers = async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.status(200).json({ user: users });
+  } catch (error) {
+    // Log and handle errors
+    console.error(error);
+    res.status(500).json({ error: "An error occurred User not Found" });
+  }
+};
 
-
-
-
-
-
-
-
-
-module.exports = { signupUser ,loginUser };
+module.exports = { signupUser, loginUser, getAllusers };

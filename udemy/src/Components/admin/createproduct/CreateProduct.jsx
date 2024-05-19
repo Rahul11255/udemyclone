@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   TextField,
   Button,
@@ -12,6 +12,7 @@ import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import "./create.css";
 
 const CreateProduct = () => {
+
   const [productData, setProductData] = useState({
     title: "",
     category: "",
@@ -46,6 +47,10 @@ const CreateProduct = () => {
     }));
     setFilename(file.name); // Set the filename state
   };
+
+  useEffect(()=>{
+    document.title = "Create Products"
+  })
 
   const [filename1, setFilename1] = useState("No file selected");
   const handleFileImagesChange = (e) => {
