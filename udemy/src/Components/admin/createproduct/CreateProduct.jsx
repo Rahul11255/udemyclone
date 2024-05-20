@@ -5,8 +5,6 @@ import {
   Typography,
   Container,
   Grid,
-  Select, MenuItem,
-  FormControl ,
   CircularProgress,
 } from "@mui/material";
 import axios from "axios";
@@ -182,7 +180,7 @@ const CreateProduct = () => {
             name="category"
             value={productData.category}
             onChange={handleChange}
-            style={{ width: '100%', padding: '18px', borderColor: 'rgba(0, 0, 0, 0.23)', borderRadius: '4px', color: 'red' ,fontSize:"18px",color:"#5567EE" }}
+            style={{ width: '100%', padding: '18px', borderColor: 'rgba(0, 0, 0, 0.23)', borderRadius: '4px',  fontSize:"18px",color:"#5567EE" }}
           >
             {dropdownOptions.map((option) => (
               <option key={option.value} style={{color:"#222222",fontSize:"18px", padding:"10px"}} value={option.value}>
