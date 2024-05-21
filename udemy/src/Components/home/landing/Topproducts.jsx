@@ -33,8 +33,8 @@ const Topproducts = () => {
           <p>Time stops when Im with you</p>
         </div>
         <div className="topdeals_bottom">
-          <ProductsCard data={data}  startSlice={0} endSlice={10}/>
-          {/* <ProductsCard data={data}  startSlice={11} endSlice={20}/> */}
+          <ProductsCard data={data}  startSlice={0} endSlice={4}/>
+          <ProductsCard data={data}  startSlice={5} endSlice={100}/>
         </div>
       </div>
     </section>

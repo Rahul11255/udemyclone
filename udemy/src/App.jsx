@@ -10,6 +10,7 @@ import Register from './Pages/Register';
 import Login from './Pages/Login';
 import Admin from './Pages/Admin';
 import SingleProduct from './Pages/SingleProduct';
+import Products from './Pages/Products';
 
 function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/product/:slug" element={<SingleProduct />} />
+        <Route path="/products" element={<Products />} />
         
 
       </Routes>
