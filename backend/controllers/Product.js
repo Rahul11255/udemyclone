@@ -174,9 +174,32 @@ const getAllOrders = async (req, res) => {
 };
 
 
+const searchProducts = async(req,res)=>{
+   try{
+       const {search} = req.params
+       console.log(search)
+       const product = await  Product.find({
+          "$or":[
+            { "category":{$regex:search , $options:"i"}},
+            { "brand":{$regex:search , $options:"i"}},
+            { "title":{$regex:search , $options:"i"}},
+            { "description":{$regex:search , $options:"i"}}
+
+          ]
+       })
+
+       res.status(200).json(product)
+
+   }catch(error){
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+   }
+}
+
+
 module.exports = { getAllOrders };
 
 
 
 
-module.exports = { ordered, createProduct ,getAllProducts,getSingleProducts,updateProduct ,getAllOrders};
+module.exports = { ordered, createProduct ,getAllProducts,getSingleProducts,updateProduct ,getAllOrders,searchProducts};
