@@ -75,7 +75,7 @@
     color:white ;
     background-color: #BDBDBD;
   }
-  .btn-search:focus ~ .input-search{
+  /* .btn-search:focus ~ .input-search{
     color: black;
     width: 300px;
     border-radius: 0px;
@@ -94,7 +94,7 @@
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
     border-radius: 5px;
 
-  }
+  } */
 
   @media screen and (max-width : 450px) {
     .navbar_right{

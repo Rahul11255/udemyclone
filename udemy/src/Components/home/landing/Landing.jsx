@@ -20,8 +20,6 @@ const Landing = () => {
     <Topproducts/>
     <Heroimg/>
     <Services/>
-    <hr />
-
     </>
   )
 }

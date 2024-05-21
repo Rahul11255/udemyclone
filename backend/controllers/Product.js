@@ -179,17 +179,15 @@ const searchProducts = async(req,res)=>{
        const {search} = req.params
        console.log(search)
        const product = await  Product.find({
+
           "$or":[
             { "category":{$regex:search , $options:"i"}},
             { "brand":{$regex:search , $options:"i"}},
             { "title":{$regex:search , $options:"i"}},
             { "description":{$regex:search , $options:"i"}}
-
           ]
        })
-
-       res.status(200).json(product)
-
+       res.status(200).json({product:product})
    }catch(error){
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });

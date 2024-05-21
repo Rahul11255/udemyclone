@@ -41,7 +41,7 @@ function UserSettingsMenu({ anchorEl, handleClose }) {
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "top",
-          horizontal: "right",
+          horizontal: "right",  
         }}
         keepMounted
         transformOrigin={{

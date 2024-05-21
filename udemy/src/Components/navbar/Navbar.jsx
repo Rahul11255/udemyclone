@@ -18,7 +18,7 @@ import { MenuItem } from "@mui/material";
 import "./navbar.css";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import UserSettingsMenu from "./UserSettingsMenu";
 import UserAuthMenu from "./UserAuthMenu";
@@ -43,6 +43,7 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [authuser, SetAuthuser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate()
   useEffect(() => {
     // Check if user is logged in
     const loggedIn = localStorage.getItem("isLoggedIn") === "true";
@@ -76,6 +77,10 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const navigateToProducts=()=>{
+    navigate("/products")
+  }
 
   return (
     <AppBar
@@ -191,7 +196,7 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <div className="navbar_right">
-              <div className="search-box">
+              <div className="search-box" onClick={navigateToProducts}>
                 <button className="btn-search">
                   <Tooltip title="Search">
                     <SearchIcon />

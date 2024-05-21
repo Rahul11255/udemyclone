@@ -31,7 +31,8 @@ function App() {
         <Route path="/product/:slug" element={<SingleProduct />} />
         <Route path="/products" element={<Products />} />
       </Routes>
-      <Footer/>
+      <hr />
+      {!isAdminRoute && <Footer/>}
       <GotoTop/>
     </>
   );
