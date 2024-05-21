@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import Footer from "../../footer/Footer"
 import Feature from "./Feature"
 import HeroSlider from "./HeroSlider"
 import Heroimg from "./Heroimg"
@@ -22,7 +21,7 @@ const Landing = () => {
     <Heroimg/>
     <Services/>
     <hr />
-    <Footer/>
+
     </>
   )
 }

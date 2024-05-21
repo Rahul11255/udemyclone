@@ -168,14 +168,6 @@ const CreateProduct = () => {
             />
           </Grid>
           <Grid item xs={12} sm={4}>
-            {/* <TextField
-              label="category"
-              name="category"
-              value={productData.category}
-              onChange={handleChange}
-              fullWidth
-            /> */}
-            {/* <InputLabel id="dropdown-category-label">Dropdown Category</InputLabel> */}
           <select
             name="category"
             value={productData.category}

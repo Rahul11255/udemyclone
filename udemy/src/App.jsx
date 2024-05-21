@@ -11,6 +11,7 @@ import Login from './Pages/Login';
 import Admin from './Pages/Admin';
 import SingleProduct from './Pages/SingleProduct';
 import Products from './Pages/Products';
+import Footer from './Components/footer/Footer';
 
 function App() {
   const location = useLocation();
@@ -29,9 +30,8 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/product/:slug" element={<SingleProduct />} />
         <Route path="/products" element={<Products />} />
-        
-
       </Routes>
+      <Footer/>
       <GotoTop/>
     </>
   );
