@@ -2,26 +2,29 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import ProductComp from "../Components/Products/ProductComp";
-import "../Components/Products/product.css"
+import "../Components/Products/product.css";
 import axios from "axios";
+import Loading from "../Components/Loading";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [search,setSearch] = useState("")
-  
-  console.log(search)
+  const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const fetchData = async () => {
+    setLoading(true);
+    setError(null);
     try {
       const res = await axios.get(
         `http://localhost:3000/products/${selectedCategory}${search}`
       );
-      console.log(selectedCategory);
-      console.log(res.data);
       setData(res.data.product);
     } catch (error) {
-      console.error(error);
+      setError("Failed to fetch data. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -31,23 +34,21 @@ const Products = () => {
         fetchData();
       }
     }, 500);
-    fetchData()
-    return ()=> clearTimeout(time)
-  }, [selectedCategory,search]);
+    fetchData();
+    return () => clearTimeout(time);
+  }, [selectedCategory, search]);
 
   const clearCat = () => {
     setSelectedCategory("");
   };
 
-  const handleSearchChange=(event)=>{
-    setSearch(event.target.value)
-  }
+  const handleSearchChange = (event) => {
+    setSearch(event.target.value);
+  };
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
-
-
 
   return (
     <>
@@ -55,7 +56,7 @@ const Products = () => {
         <input
           autoFocus
           type="search"
-          placeholder="search your choice"
+          placeholder="Search your choice"
           value={search}
           onChange={handleSearchChange}
         />
@@ -65,13 +66,25 @@ const Products = () => {
           <Link className="link" to={"/"}>
             Home
           </Link>
-          <KeyboardArrowRightIcon  /> <span>Products</span>
+          <KeyboardArrowRightIcon /> <span>Products</span>
         </p>
       </section>
-      <ProductComp 
-
-data={data} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} clearCat={clearCat} handleCategoryChange={handleCategoryChange}
-      />
+      {loading ? (
+        <> <div className="product_loading">
+          <Loading/>
+          </div>
+        </>
+      ) : error ? (
+        <p style={{color:"red", fontFamily:"Poppins, sans-serif"}}>{error}</p>
+      ) : (
+        <ProductComp
+          data={data}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          clearCat={clearCat}
+          handleCategoryChange={handleCategoryChange}
+        />
+      )}
     </>
   );
 };
