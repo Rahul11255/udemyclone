@@ -136,9 +136,22 @@ const updateProduct = async (req, res, next) => {
 // Create order
 const ordered = async (req, res) => {
   try {
-    const userOrder = req.body;
-    const newOrder = await Order.create(userOrder);
-    
+    const userID = req.user.id;
+    const { items, address, totalAmount, discount, pricewithoutdiscount } = req.body;
+
+    // Ensure that all required fields are present
+    if (!items || !address || !totalAmount || !discount || !pricewithoutdiscount) {
+      return res.status(400).json({ error: "Missing required order data" });
+    }
+
+    const newOrder = await Order.create({
+      items,
+      address,
+      totalAmount,
+      discount,
+      pricewithoutdiscount,
+      userid: userID
+    });
     res.status(200).json({
       message: "Ordered successfully",
       order: newOrder,

@@ -5,7 +5,7 @@ const {jwtAuthMiddleware} = require("../jwt")
 const {runValidation} = require('../validate/index')
 const {createProductValidator} = require("../validate/createProduct")
 
-router.route('/order').post(ordered)
+router.route('/order').post(jwtAuthMiddleware,ordered)
 router.route('/products').get(getAllProducts)
 router.route('/orders').get(getAllOrders)
 router.route('/product/:slug').get(getSingleProducts)

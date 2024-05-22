@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCart } from "react-use-cart";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Button } from "@mui/material";
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
 import { Link } from "react-router-dom";
 import EmptyCart from "./EmptyCart";
 import axios from 'axios';
@@ -12,6 +12,8 @@ import CartTotal from "./CartTotal";
 const ShoppingCart = () => {
   const { totalItems, items, updateItemQuantity, removeItem, emptyCart, isEmpty } = useCart();
   const [message ,setMessage] = useState("")
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false); // Dialog state
   const [address, setAddress] = useState({
     name: "",
     landmark: "",
@@ -29,6 +31,13 @@ const ShoppingCart = () => {
     phoneNumber: false
   });
 
+  useEffect(() => {
+    // Check if user is logged in
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(loggedIn);
+  }, []);
+
+
   const handleAddressChange = (event) => {
     const { name, value } = event.target;
     setAddress((prevAddress) => ({
@@ -41,6 +50,8 @@ const ShoppingCart = () => {
     }));
   };
   const handlePlaceOrder = async () => {
+    if (isLoggedIn) {
+      
     const hasEmptyFields = Object.values(address).some(value => value.trim() === "");
     if (hasEmptyFields) {
       setErrors(prevErrors => ({
@@ -77,9 +88,16 @@ const ShoppingCart = () => {
         pincode: false,
         phoneNumber: false
       });
+      const token = localStorage.getItem("token");
   
       try {
-        const response = await axios.post("http://localhost:3000/order", orderData);
+        const response = await axios.post("http://localhost:3000/order", orderData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+        );
         console.log("Order data sent successfully.", response.data);
         console.log("Order data sent successfully.", response.data.message);
       emptyCart();
@@ -88,8 +106,13 @@ const ShoppingCart = () => {
         console.error("Error sending order data:", error);
       }
     }
-  };
+  }else{
+    setOpenDialog(true)
+  }};
   
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
 
 
   const discountPrice = (price, discount) => {
@@ -183,6 +206,23 @@ const ShoppingCart = () => {
             
         />
       </div>
+
+      <Dialog open={openDialog} onClose={handleCloseDialog}>
+        <DialogTitle>Login Required</DialogTitle>
+        <DialogContent>
+          <p>Please log in to place an order.</p>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} color="primary">
+            Cancle
+          </Button>
+          <Link to="/login">
+            <Button color="primary" autoFocus>
+              Log In
+            </Button>
+          </Link>
+        </DialogActions>
+      </Dialog>
     </section>
   );
 };
