@@ -208,3 +208,21 @@ color: #9A9A9A;
   flex-direction: column;
   gap: 20px;
 }
+
+
+@media screen and (max-width : 680px) {
+  .product_grid {
+    display: grid;
+    grid-template-columns:  1fr;
+  }
+  
+  .input_container input{
+    width: 80%;
+    font-family: var(--pfonts); 
+    padding: 10px;
+    border: none;
+    cursor:text;
+    outline: none;
+    
+  }
+}
