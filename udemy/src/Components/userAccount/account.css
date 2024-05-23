@@ -1,0 +1,16 @@
+
+.account_body{
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: #F1F3F6;
+    padding: 15px 66px;
+
+}
+
+.account_container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    column-gap: 17px;
+}

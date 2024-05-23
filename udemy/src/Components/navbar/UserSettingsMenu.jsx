@@ -9,8 +9,12 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
-const settings = ["Profile", "Logout"];
+const settings = [
+  {name:"Profile",Link:"/account"},
+  {name:"Logout"}
+];
 
 function UserSettingsMenu({ anchorEl, handleClose }) {
   const [openDialog, setOpenDialog] = useState(false);
@@ -52,13 +56,13 @@ function UserSettingsMenu({ anchorEl, handleClose }) {
         onClose={handleClose}
       >
         {settings.map((setting, index) =>
-          setting === "Logout" ? (
+          setting.name === "Logout" ? (
             <MenuItem key={index} onClick={handleOpenDialog}>
-              <Typography textAlign="center">{setting}</Typography>
+               <Typography textAlign="center">{setting.name}</Typography> 
             </MenuItem>
           ) : (
             <MenuItem key={index} onClick={handleClose}>
-              <Typography textAlign="center">{setting}</Typography>
+             <Link  className="nav_list_items" to={'/account'}>  <Typography textAlign="center">{setting.name}</Typography> </Link>
             </MenuItem>
           )
         )}
