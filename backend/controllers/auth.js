@@ -76,4 +76,24 @@ const getAllusers = async (req, res) => {
   }
 };
 
-module.exports = { signupUser, loginUser, getAllusers };
+
+const getSingleUser = async(req,res)=>{
+  try {
+  const userID = req.user.id;
+  const _id = userID
+  const user = await User.findOne({_id})
+
+  console.log(user)
+   
+  res.status(200).json(user) 
+    
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred User not Found" });
+  }
+
+
+}
+
+
+module.exports = { signupUser, loginUser, getAllusers ,  getSingleUser };
