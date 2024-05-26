@@ -80,9 +80,9 @@ function UserSettingsMenu({ anchorEl, handleClose }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog} variant="contained">Disagree</Button>
+          <Button onClick={handleCloseDialog} variant="contained">Cancle</Button>
           <Button onClick={handleLogout} variant="contained" color="error" autoFocus>
-            Agree
+            Logout
           </Button>
         </DialogActions>
       </Dialog>
