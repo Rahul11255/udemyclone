@@ -186,18 +186,23 @@ const getAllOrders = async (req, res) => {
   }
 };
 
-const getOrderwithUserID= async(req,res)=>{
+const getOrderwithUserID = async (req, res) => {
   try {
-    const userid = req.user.id;
-    const userOrder = await Order.findOne({userid})
+    const userId = req.user.id;
+    // Using projection to exclude the address field
+    const userOrder = await Order.find({ userid: userId }).select('-address').sort({ createdAt: -1 });
 
-    res.status(200).json(userOrder)
-    
+    if (!userOrder) {
+      return res.status(404).json({ error: "Order not found" });
+    }
+
+    res.status(200).json({order:userOrder});
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "An error occurred, Order not found" });
   }
-}
+};
 
 
 

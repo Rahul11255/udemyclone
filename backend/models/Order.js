@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 // Define the schema for the item
 const itemSchema = new mongoose.Schema({
     title: String,
+    slug:String,
     category: String,
     price: Number,
     quantity: Number,
