@@ -4,7 +4,8 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+  font-family: "Poppins", sans-serif ;
 }
 
 /* font-family: "Poppins", sans-serif !important; */
@@ -23,6 +24,11 @@
   text-decoration: none;
   color: var(--grey);
 }
+
+.link:hover{
+  color: var(--blue);
+}
+
 
 .gototop_container{
   display: flex;

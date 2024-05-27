@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 
 const settings = [
   {name:"Profile",Link:"/account"},
+  {name:"My Order",Link:"/account/order"},
   {name:"Logout"}
 ];
 
@@ -62,7 +63,7 @@ function UserSettingsMenu({ anchorEl, handleClose }) {
             </MenuItem>
           ) : (
             <MenuItem key={index} onClick={handleClose}>
-             <Link  className="nav_list_items" to={'/account'}>  <Typography textAlign="center">{setting.name}</Typography> </Link>
+             <Link  className="nav_list_items" to={setting.Link}>  <Typography textAlign="center">{setting.name}</Typography> </Link>
             </MenuItem>
           )
         )}

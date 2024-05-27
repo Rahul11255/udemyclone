@@ -13,6 +13,7 @@ import SingleProduct from './Pages/SingleProduct';
 import Products from './Pages/Products';
 import Footer from './Components/footer/Footer';
 import Account from './Pages/Account';
+import MyOrder from './Pages/MyOrder';
 
 function App() {
   const location = useLocation();
@@ -32,6 +33,7 @@ function App() {
         <Route path="/product/:slug" element={<SingleProduct />} />
         <Route path="/products" element={<Products />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/account/order" element={<MyOrder />} />
       </Routes>
       <hr />
       {!isAdminRoute && <Footer/>}
