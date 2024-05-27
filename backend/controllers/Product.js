@@ -182,9 +182,23 @@ const getAllOrders = async (req, res) => {
     res.status(200).json({ order: ordersWithoutImages });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "An error occurred, products not found" });
+    res.status(500).json({ error: "An error occurred, Order not found" });
   }
 };
+
+const getOrderwithUserID= async(req,res)=>{
+  try {
+    const userid = req.user.id;
+    const userOrder = await Order.findOne({userid})
+
+    res.status(200).json(userOrder)
+    
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred, Order not found" });
+  }
+}
+
 
 
 const searchProducts = async(req,res)=>{
@@ -213,4 +227,4 @@ module.exports = { getAllOrders };
 
 
 
-module.exports = { ordered, createProduct ,getAllProducts,getSingleProducts,updateProduct ,getAllOrders,searchProducts};
+module.exports = { ordered, createProduct ,getAllProducts,getSingleProducts,updateProduct ,getAllOrders,searchProducts ,getOrderwithUserID};
