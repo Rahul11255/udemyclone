@@ -71,7 +71,7 @@ const ProductsCard = ({ data, startSlice, endSlice }) => {
         {data.slice(startSlice, endSlice).map((product, index) => (
           <SwiperSlide key={index} className="card"  >
             <div className="card_img" data-aos="zoom-in">
-           <Link to={`/product/` + product.slug }>  <img src={product.thumbnail} alt={product.title} /> </Link> 
+           <Link to={`/product/` + product.slug } target="_blank">  <img src={product.thumbnail} alt={product.title} /> </Link> 
               <div className="cart_buton" onClick={() => addtoCart(product)}>
                 <Tooltip title="add to cart">
                   <ShoppingCartOutlinedIcon />

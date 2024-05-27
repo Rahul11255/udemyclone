@@ -82,7 +82,7 @@ const ProductComp = ({selectedCategory ,data ,clearCat , handleCategoryChange })
             return (
               <div className="p_card" key={index}>
                 <div className="p_img">
-                  <Link to={`/product/` + product.slug}>
+                  <Link to={`/product/` + product.slug} target="_blank">
                     <img src={product.thumbnail} alt="" />
                   </Link>
                   <div className="p_cart_btn">
