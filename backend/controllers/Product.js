@@ -168,6 +168,40 @@ const ordered = async (req, res) => {
   }
 };
 
+// update order status by admin 
+const updateOrderStatus= async ( req, res)=>{
+  try {
+
+     // Check if user has admin role
+     if (!(await checkAdminRole(req.user.id))) {
+      return res.status(403).json({ message: "User does not have admin role" });
+    }
+
+
+    const  id = req.params.id;
+    const { status } = req.body;
+    const orderExist = await Order.findById(id);
+    
+    if(!orderExist){
+      return res.status(401).json({msg:"Ordee not found"});
+    }
+
+    const order = await Order.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true } // Return the updated document
+    );
+      
+    res.status(200).json({ message: 'Order status updated'});
+
+  }  catch (error) {
+    console.error('Error updating order status', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+
+
 const getAllOrders = async (req, res) => {
   try {
     // Fetch all orders and sort them by creation date in descending order
@@ -238,4 +272,4 @@ module.exports = { getAllOrders };
 
 
 
-module.exports = { ordered, createProduct ,getAllProducts,getSingleProducts,updateProduct ,getAllOrders,searchProducts ,getOrderwithUserID};
+module.exports = { ordered, createProduct ,getAllProducts,getSingleProducts,updateProduct ,getAllOrders,searchProducts ,getOrderwithUserID,updateOrderStatus};
