@@ -16,7 +16,7 @@ const Footer = () => {
         {/* First Grid */}
         <Grid item xs={12} sm={4}>
           <div className='footer_left'>
-              <div className='footer_img'> <img src="https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/logo-udemy.svg" alt="logo" /> </div>
+              <div className='footer_img'> <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg" alt="logo" /> </div>
                 <p>Lopsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text</p>
                 <div className='footer_icon'>
                 <div> <FacebookOutlinedIcon sx={{color:"#3B8BF4",fontSize:45}}/> </div>

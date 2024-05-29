@@ -187,7 +187,7 @@ const OrderList = () => {
                     <TableCell
                       sx={{ border: "1px solid grey", textAlign: "center" }}
                     >
-                      {item._id}
+                      {item.orderID}
                     </TableCell>
                     <TableCell
                       sx={{

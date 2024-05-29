@@ -100,11 +100,11 @@ function ResponsiveAppBar() {
           <Box sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
             <NavLink to={"/"} style={{ border: "none" }}>
               <img
-                src="https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/logo-udemy.svg"
+                src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
                 alt="Logo"
                 style={{
-                  width: "120px",
-                  height: "35px",
+                  width: "140px",
+                  height: "40px",
                   cursor: "pointer",
                 }}
               />
@@ -137,7 +137,7 @@ function ResponsiveAppBar() {
             >
               <NavLink to={"/"} style={{ border: "none" }}>
                 <img
-                  src="https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/logo-udemy.svg"
+                  src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
                   alt="Logo"
                   style={{ width: "100px", height: "35px" }}
                 />

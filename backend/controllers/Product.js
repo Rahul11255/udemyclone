@@ -4,6 +4,7 @@ const User = require("../models/User");
 const cloudinary = require("cloudinary").v2;
 const fs = require('fs');
 const slugify = require('slugify');
+const orderIdGenerator = require('order-id')('mysecret');
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -144,14 +145,19 @@ const ordered = async (req, res) => {
       return res.status(400).json({ error: "Missing required order data" });
     }
 
+    // Generate a unique order ID
+    const orderID = orderIdGenerator.generate();
+
     const newOrder = await Order.create({
       items,
       address,
       totalAmount,
       discount,
       pricewithoutdiscount,
-      userid: userID
+      userid: userID,
+      orderID
     });
+
     res.status(200).json({
       message: "Ordered successfully",
       order: newOrder,

@@ -28,6 +28,7 @@ const addressSchema = new mongoose.Schema({
 
 // Define the schema for the order
 const orderSchema = new mongoose.Schema({
+  orderID:String,
   items: [itemSchema], // Array of items
   address: addressSchema, // Address object
   totalAmount: Number,
@@ -39,6 +40,7 @@ const orderSchema = new mongoose.Schema({
     enum: ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'],
     default: 'Pending'
   }
+
   
 },{ timestamps: true });
 
