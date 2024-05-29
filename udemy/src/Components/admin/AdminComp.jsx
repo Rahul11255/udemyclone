@@ -102,7 +102,7 @@ const Drawer = styled(MuiDrawer, {
 export default function AdminComp() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [menuData, setMenudata] = React.useState("createProduct");
+  const [menuData, setMenudata] = React.useState("listoforders");
 
   const handleDrawerOpen = () => {
     setOpen(true);

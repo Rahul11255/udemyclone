@@ -188,11 +188,13 @@ const updateOrderStatus= async ( req, res)=>{
 
     const order = await Order.findByIdAndUpdate(
       id,
-      { status },
+      { $set: { status }, $push: { history: { status, timestamp: Date.now() } } },
       { new: true } // Return the updated document
     );
+
+    console.log("order status updated")
       
-    res.status(200).json({ message: 'Order status updated'});
+    res.status(200).json({ message: 'Order status updated',order});
 
   }  catch (error) {
     console.error('Error updating order status', error);

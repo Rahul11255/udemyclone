@@ -117,16 +117,41 @@ const MyOrderComp = () => {
                           }}
                         >
                           <Box sx={{ textAlign: 'center' }}>
-                            <Typography
-                              variant="p"
-                              component="span"
-                              sx={{
-                                color: index <= stepIndex ? 'green' : 'lightgray',
-                              }}
-                            >
-                              {label}
-                            </Typography>
-                          </Box>
+  <Typography
+    variant="p"
+    component="span"
+    sx={{
+      color: index <= stepIndex ? 'green' : 'lightgray',
+    }}
+  >
+    {label}
+    {label === 'Order Placed' && (
+      <p>
+        {`${new Date(data.createdAt).toLocaleString()}`} {/* Display the creation timestamp */}
+      </p>
+    )}
+    {label === 'Order Confirmed' && (
+      <p>
+        {data.history.find(status => status.status === 'Processing') &&
+          `${new Date(data.history.find(status => status.status === 'Processing').timestamp).toLocaleString()}`} {/* Display the processing timestamp if available */}
+      </p>
+    )}
+    {label === 'Order Shipped' && (
+      <p>
+        {data.history.find(status => status.status === 'Shipped') &&
+          `${new Date(data.history.find(status => status.status === 'Shipped').timestamp).toLocaleString()}`} {/* Display the shipped timestamp if available */}
+      </p>
+    )}
+    {label === 'Order Delivered' && (
+      <p>
+        {data.history.find(status => status.status === 'Delivered') &&
+          `${new Date(data.history.find(status => status.status === 'Delivered').timestamp).toLocaleString()}`} {/* Display the delivered timestamp if available */}
+      </p>
+    )}
+    {/* Add similar checks for other status labels as needed */}
+  </Typography>
+</Box>
+
                         </StepLabel>
                       </Step>
                     ))}

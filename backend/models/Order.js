@@ -26,6 +26,17 @@ const addressSchema = new mongoose.Schema({
   pincode: String
 });
 
+const historySchema = new mongoose.Schema({
+  status: {
+    type: String,
+    enum: ['Pending', 'Processing', 'Shipped', 'Delivered'],
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 // Define the schema for the order
 const orderSchema = new mongoose.Schema({
   orderID:String,
@@ -39,8 +50,8 @@ const orderSchema = new mongoose.Schema({
     type: String,
     enum: ['Pending', 'Processing', 'Shipped', 'Delivered'],
     default: 'Pending'
-  }
-
+  },
+  history: [historySchema], // Add the history field
   
 },{ timestamps: true });
 

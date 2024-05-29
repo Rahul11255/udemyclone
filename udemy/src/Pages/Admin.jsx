@@ -48,28 +48,28 @@ const Admin = () => {
   return (
     <>
       {isAdminLoggedIn() && <AdminComp />}
-      <Dialog open={dialogOpen} onClose={handleDialogClose}>
-        <DialogTitle>Enter Password</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Please enter the password to access the admin area.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Password"
-            type="password"
-            fullWidth
-            variant="standard"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDialogClose}>Cancel</Button>
-          <Button onClick={handleDialogConfirm}>Confirm</Button>
-        </DialogActions>
-      </Dialog>
+        {/* <Dialog open={dialogOpen} onClose={handleDialogClose}>
+          <DialogTitle>Enter Password</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Please enter the password to access the admin area.
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              label="Password"
+              type="password"
+              fullWidth
+              variant="standard"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleDialogClose}>Cancel</Button>
+            <Button onClick={handleDialogConfirm}>Confirm</Button>
+          </DialogActions>
+        </Dialog> */}
     </>
   );
 };

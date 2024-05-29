@@ -47,3 +47,20 @@
 .order_td_cell{
     font-family: var(--pfonts) !important;
 }
+
+.order_save_btn{
+   border-radius: 0% !important;
+   text-transform: capitalize !important;
+   background-color: var(--blue) !important;
+}
+
+.order_save_btn:hover{
+  background-color: var(--black) !important;
+}
+
+.status_text{
+    color: var(--lgreen);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
