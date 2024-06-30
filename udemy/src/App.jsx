@@ -14,6 +14,7 @@ import Products from './Pages/Products';
 import Footer from './Components/footer/Footer';
 import Account from './Pages/Account';
 import MyOrder from './Pages/MyOrder';
+import Contact from './Pages/Contact';
 
 function App() {
   const location = useLocation();
@@ -25,7 +26,7 @@ function App() {
       {!isAdminRoute && <Offer/>}
       {!isAdminRoute && <Navbar/>}
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Landing />}  />
         <Route path="/user-cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
@@ -34,8 +35,9 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/account" element={<Account />} />
         <Route path="/account/order" element={<MyOrder />} />
+        <Route path="/contact" element={<Contact/>} />
       </Routes>
-      <hr />
+      {!isAdminRoute &&   <hr />}
       {!isAdminRoute && <Footer/>}
       <GotoTop/>
     </>

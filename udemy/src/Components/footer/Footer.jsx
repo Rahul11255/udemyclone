@@ -40,7 +40,7 @@ const Footer = () => {
         <Grid item xs={12} sm={4}>
           <div className='footer_right'>
               <h3>Newsletter</h3>
-              <div className='inputbtn'> <input type="text" placeholder='Enter your email..' /> <Button>SUBSCRIBE</Button> </div>
+              <div className='inputbtn'> <input type="text" placeholder='Enter your email..' /> <Button style={{width:"120px"}}>SUBSCRIBE</Button> </div>
               <div style={{marginTop:"12px",display:"flex",gap:"5px"}}>
                 <img src="https://hublet-store.myshopify.com/cdn/shop/files/p1.png?v=1626316013" alt=""  />
                 <img src="https://hublet-store.myshopify.com/cdn/shop/files/p4.png?v=1626316013" alt=""  />

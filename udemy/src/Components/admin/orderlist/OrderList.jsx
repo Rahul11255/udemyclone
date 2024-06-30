@@ -105,7 +105,7 @@ const OrderList = () => {
     const status = order.status.toLowerCase()
     const cname = order.address.name.toLowerCase();
     return (
-      order._id.toLowerCase().includes(searchString) ||
+      order.orderID.toLowerCase().includes(searchString) ||
       formattedDate.includes(searchString) ||
       city.includes(searchString) ||
       cname.includes(searchString) || status.includes(searchString)

@@ -48,7 +48,7 @@ const Admin = () => {
   return (
     <>
       {isAdminLoggedIn() && <AdminComp />}
-        {/* <Dialog open={dialogOpen} onClose={handleDialogClose}>
+        <Dialog open={dialogOpen} onClose={handleDialogClose}>
           <DialogTitle>Enter Password</DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -69,7 +69,7 @@ const Admin = () => {
             <Button onClick={handleDialogClose}>Cancel</Button>
             <Button onClick={handleDialogConfirm}>Confirm</Button>
           </DialogActions>
-        </Dialog> */}
+        </Dialog>
     </>
   );
 };

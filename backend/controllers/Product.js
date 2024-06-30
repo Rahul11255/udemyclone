@@ -268,10 +268,43 @@ const searchProducts = async(req,res)=>{
    }
 }
 
+const adminDashboard = async(req,res)=>{
+   try {
+     
+    // check the admin role
 
-module.exports = { getAllOrders };
+    if (!(await checkAdminRole(req.user.id))) {
+      return res.status(403).json({ message: "User does not have admin role" });
+    }
+  // get all users and print users length
+   const allUsers = await User.find({})
+   
+   if(!allUsers){
+      return res.status(400).json({error:"Users not Found"})
+   }
+
+   const allUserslength = allUsers.length
+
+  // get all orders and print order length
+  const allOrders = await Order.find({})
+
+  if(!allOrders){
+    return res.status(400).json({error: "Order not found" })
+  }
+
+  const allOrderslength = allOrders.length
+  
+   console.log(allUserslength)
+   res.status(200).json({userLength:allUserslength , orderLength:allOrderslength})
+    
+   } catch (error) {
+     console.error(error);
+     res.status(500).json({ error:  "Internal server error"});
+   }
+}
 
 
 
 
-module.exports = { ordered, createProduct ,getAllProducts,getSingleProducts,updateProduct ,getAllOrders,searchProducts ,getOrderwithUserID,updateOrderStatus};
+
+module.exports = { ordered, createProduct ,getAllProducts,getSingleProducts,updateProduct ,getAllOrders,searchProducts ,getOrderwithUserID,updateOrderStatus ,adminDashboard};
